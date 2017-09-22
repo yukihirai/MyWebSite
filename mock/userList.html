@@ -31,11 +31,53 @@
 
 		<ul class="nav nav-pills nav-justified">
 			<li><a href="index.html">HOME</a>
-			<li><a href="">CART</a></li>
+			<li><a href="cart.html">CART</a></li>
 			<li><a href="userData.html">YOUR DATA</a></li>
 			<li class="active"><a href="userList.html">USERS DATA</a></li>
 		</ul>
 
+		<br>
+		<br>
+		<br>
+	<div class="well">
+		<div class="row">
+			<div class="col-xs-1"></div>
+			<h1 class="col-xs-9 h2 bg-primary">ユーザ検索項目</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-5">
+				<div class="bg-primary">ログインID</div><input class="form-control input-lg" type="text" id="login_id" placeholder="sample">
+				<br>
+				<div class="bg-primary">ユーザ名</div><input class="form-control input-lg" type="text" id="name" placeholder="名無しのごんべ">
+			</div>
+		</div>
+
+		<br>
+
+		<div class="row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-9">
+				<div class="bg-primary">誕生日</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-4">
+				<input class="form-control input-lg" type="date" id="birth_date1">
+			</div>
+			<div class="col-xs-1">
+			<font size="6">～</font>
+			</div>
+			<div class="col-xs-4">
+				<input class="form-control input-lg" type="date" id="birth_date2">
+			</div>
+		</div>
+		<br>
+		<div align="center"><button type="submit" class="btn btn-primary">検索</button></div>
+
+	</div>
 		<br>
 		<br>
 		<br>
@@ -57,9 +99,9 @@
 	    				<td>名無しのごんべ</td>
 	    				<td>1111年22月33日</td>
 	    				<td>
-	    					<a href="" class="btn btn-primary btn-xs">詳細</a>
-	    					<a href="" class="btn btn-warning btn-xs">更新</a>
-	    					<a href="" class="btn btn-danger btn-xs">削除</a>
+	    					<a href="userDetail.html" class="btn btn-primary btn-xs">詳細</a>
+	    					<a href="userUpdate.html" class="btn btn-warning btn-xs">更新</a>
+	    					<a href="userDelete.html" class="btn btn-danger btn-xs">削除</a>
 	    				</td>
 	    			</tr>
 	    		</tbody>
