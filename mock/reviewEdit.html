@@ -9,7 +9,11 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>userDelete</title>
+    <title>editReview</title>
+
+    <style type="text/css">
+    p.break-word{word-wrap:break-word;}
+    </style>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -29,35 +33,38 @@
 
     <div class="container">
 
-		<div class="row bg-danger">
-      		<div class="row">
-      			<div class="col-xs-1"></div>
-      			<div class="col-xs-3">
-      				<font size="5">ログインID</font>
-      			</div>
-      			<div class="col-xs-4">
-      				<font size="5">sample</font>
-      			</div>
+
+		<div class="panel panel-info">
+	    	<div class="panel-heading">
+	    		<div class="panel-title"><font size="5">レビュー記入欄</font></div>
 	    	</div>
 	    	<br>
+	    	<font size="4">見出し記入欄</font>
 	    	<br>
-	    	<div class="row">
-	    		<div class="col-xs-1"></div>
-	    		<div class="col-xs-5">
-	    			<font size="5">を削除してもよろしいですか</font>
-	    		</div>
-	    	</div>
+	    	<input type="text" name="head_comment" size="100" maxlength="50" value="見出しコメント(∩´∀｀)∩" required>
 	    	<br>
-	    	<div class="row">
-	    		<div class="col-xs-1"></div>
-	    		<div class="col-xs-2">
-	    			<a href="userList.html" class="btn btn-primary">キャンセル</a>
-	    		</div>
-	    		<div class="col-xs-2">
-	    			<button type="submit" class="btn btn-danger">削除</button>
-	    		</div>
+	    	<font size="4">評価</font>
+	    	<select name="item_evaluation"  required>
+	    		<option value="5">5</option>
+	    		<option value="4">4</option>
+	    		<option value="3">3</option>
+	    		<option value="2">2</option>
+	    		<option value="1">1</option>
+	    	</select>
+	    	<br>
+	    	<font size="4">レビュー内容</font>
+	    	<br>
+	    	<textarea name="review" cols="150" rows="5" required>本文！( ˘ω˘)ｽﾔｧ( ﾟдﾟ)ﾊｯ!</textarea>
+
+	    	<div class="panel-footer">
+	    		<button type="submit" class="btn btn-success bt-sm">送信</button>
 	    	</div>
 	    </div>
+
+	    <br>
+
+	    <a href="itemDetail.html"><font size="4">戻る</font></a>
+
 
 
     </div> <!-- /container -->
