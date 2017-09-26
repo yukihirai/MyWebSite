@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>reviewDelete</title>
+    <title>masterItemList</title>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -38,24 +38,45 @@
 		<br>
 		<br>
 		<br>
-		<div class="row bg-info">
-			<div align="center"><font size="7">商品をカートに追加しました。</font></div>
-	    </div>
 
-	    <br>
-	    <br>
-
+		<div align="right"><a href="master.html"><font size="4">戻る</font></a></div>
+		<br>
+		<br>
 		<div class="row">
-	    	<div class="col-xs-3"></div>
-	    	<div class="col-xs-3">
-	    		<a href="index.html" class="btn btn-success btn-lg">買い物を続ける</a>
-	    	</div>
-	    	<div class="col-xs-3">
-	    		<a href="cart.html" class="btn btn-warning btn-lg">カート内の確認</a>
-	    	</div>
+      		<div class="col-xs-6"></div>
+      		<div class="col-xs-4">
+      			<input type="text" class="form-control" name="serchWord" placeholder="検索ワード">
+      			<br>
+      			<div align="right"><button type="submit" class="btn btn-success btn-xs">検索</button></div>
+      		</div>
 	    </div>
+	    <br>
 
+		<div class="panel panel-success">
+	    	<div class="panel-heading">
+	    		<div class="panel-title"><font size="5">登録商品一覧</font></div>
+	    	</div>
+	    	<table class="table table-hover">
+	    		<thead>
+	    			<th>商品名</th>
+	    			<th>金額</th>
+	    			<th></th>
+	    		</thead>
+	    		<tbody>
+	    			<tr>
+	    				<td>豚ちゃん蚊取り線香</td>
+	    				<td>1296円</td>
+	    				<td>
+	    					<a href="masterItemDetail.html" class="btn btn-success btn-xs">詳細</a>
+	    					<a href="masterItemUpdate.html" class="btn btn-warning btn-xs">更新</a>
+	    					<a href="masterItemDelete.html" class="btn btn-danger btn-xs">削除</a>
+	    				</td>
+	    			</tr>
+	    		</tbody>
 
+	    	</table>
+
+	    </div>
 
     </div> <!-- /container -->
 

@@ -9,7 +9,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>login</title>
+    <title>buyConfilm</title>
+    <style type="text/css">
+    p.break-word{word-wrap:break-word;}
+    </style>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,21 +30,42 @@
 
   <body>
 
-    <div class="container">
+	<div class="container">
 
-      		<form action="index.html" class="form-signin">
-        		<h2 class="form-signin-heading">ログイン</h2><div align="right"><a href="userRegistration.html">新規登録</a></div>
-        		<br>
-        		<label for="inputEmail" class="sr-only">ログインID</label>
-        		<input type="text" id="login_id" class="form-control" placeholder="ログインID" required autofocus>
-       			<br>
-        		<label for="inputPassword" class="sr-only">パスワード</label>
-        		<input type="password" id="login_password" class="form-control" placeholder="パスワード" required>
-        		<br>
-        		<br>
-        		<button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
-      </form>
 
+	    	<div class="panel panel-primary">
+	    		<div class="panel-heading">
+	    			<div class="panel-title"><font size="5">合計購入金額</font></div>
+	    		</div>
+	    		<table class="table table-hober">
+	    			<thead>
+	    				<th>商品金額</th>
+	    				<th>配送料</th>
+	    				<th>合計金額</th>
+	    			</thead>
+	    			<tbody>
+	    				<tr>
+	    					<td>1296円</td>
+	    					<td>500円</td>
+	    					<td>1796円</td>
+	    				</tr>
+	    			</tbody>
+
+	    		</table>
+
+
+			</div>
+
+
+	<div class="row">
+		<div class="col-xs-3"></div>
+		<div class="col-xs-3">
+			<a href="index.html" class="btn btn-success">買い物を続ける</a>
+		</div>
+		<div class="col-xs-3">
+			<a href="logout.html" class="btn btn-danger">ログアウト</a>
+		</div>
+	</div>
 
 
     </div> <!-- /container -->
