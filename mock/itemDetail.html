@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>cart</title>
+    <title>iteDetail</title>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -58,11 +58,13 @@
 	<br>
 		<div class="panel panel-primary">
 	    	<div class="panel-heading">
-	    		<div class="panel-title"><font size="5">見出しコメント(∩´∀｀)∩</font></div>
+	    		<div class="panel-title"><font size="5">あこがれの豚さん！</font></div>
 	    		<font size="4">評価　★★★★☆</font>
 	    		<div align="right">名無しのごんべさん</div>
 	    	</div>
-	    	<p class="break-word"><font size="4">本文！( ˘ω˘)ｽﾔｧ( ﾟдﾟ)ﾊｯ!</font></p>
+	    	<p class="break-word"><font size="4">
+	    		昨年まで普通の電気蚊取りを使っていましたが、日本的な風情でずっとこの豚さんが気になっていました。近くにも、同じ様な豚さんが安価で売っていましたが、質感的にはこちらの方が良かったので、買って良かったです♪
+	    	</font></p>
 	    	<br>
 	    	<div align="right">1111年22月33日44時55秒66</div>
 	    	<div class="panel-footer">
@@ -77,11 +79,13 @@
 
 		<div class="panel panel-primary">
 	    	<div class="panel-heading">
-	    		<div class="panel-title"><font size="5">見出しコメント～</font></div>
+	    		<div class="panel-title"><font size="5">キンチョウの渦巻きも楽々セット可能！</font></div>
 	    		<font size="4">評価　★★★☆☆</font>
 	    		<div align="right">名無しのごんぞうさん</div>
 	    	</div>
-	    	<p class="break-word"><font size="4">(´◉◞౪◟◉)aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</font></p>
+	    	<p class="break-word"><font size="4">
+	    		豚にはサイズが各種あり、この商品はキンチョウの蚊取り線香の標準品が、折らずにラクにセットできるサイズです。付属の針金がやや貧弱ですが必要ならば蚊取り線香付属金具を中に入れることも出来ます。大きめの梱包で到着するのでビックリされるかもしれませんが、割れずにしっかり届きました。一家に一匹（笑）、この豚で快適な夏をお楽しみください。
+	    	</font></p>
 	    	<br>
 	    	<div align="right">1111年22月33日44時55秒66</div>
 	    	<div class="panel-footer">
@@ -98,28 +102,45 @@
 	    	<div class="panel-heading">
 	    		<div class="panel-title"><font size="5">レビュー記入欄</font></div>
 	    	</div>
+
 	    	<br>
-	    	<font size="4">見出し記入欄</font>
 	    	<br>
-	    	<input type="text" name="head_comment" size="100" maxlength="50" placeholder="見出しコメント" required>
+
+	    	<div class="form-group">
+	    		<label class="col-xs-2 control-label">見出しコメント</label>
+	    		<div class="col-xs-9">
+	    			<input type="text" class="form-control" name="head_comment" size="100" maxlength="50" placeholder="見出し" required>
+	    		</div>
+	    	</div>
 	    	<br>
-	    	<font size="4">商品評価</font>
-	    	<select name="item_evaluation" required>
-	    		<option value="5">5</option>
-	    		<option value="4">4</option>
-	    		<option value="3">3</option>
-	    		<option value="2">2</option>
-	    		<option value="1">1</option>
-	    	</select>
+
 	    	<br>
-	    	<font size="4">レビュー内容</font>
+	    	<div class="form-group">
+	    		<label class="col-xs-2 control-label">レビュー内容</label>
+	    		<div class="col-xs-10">
+	    			<textarea class="form-control" name="review" cols="150" rows="5" placeholder="内容" required></textarea>
+	    		</div>
+	    	</div>
 	    	<br>
-	    	<textarea name="review" cols="150" rows="5" placeholder="コメント" required></textarea>
+
+	    	<br>
+
+	    	<div class="form-group">
+				<label class="col-xs-1 control-label">商品評価</label>
+	    			<select name="item_evaluation" required>
+	    				<option value="5">5</option>
+	    				<option value="4">4</option>
+	    				<option value="3">3</option>
+	    				<option value="2">2</option>
+	    				<option value="1">1</option>
+	   				</select>
+	   		</div>
 
 	    	<div class="panel-footer">
-	    		<button type="submit" class="btn btn-success bt-sm">送信</button>
+	    		<button type="submit" class="btn btn-info bt-sm">送信</button>
 	    	</div>
 	    </div>
+
 
 	    <br>
 

@@ -34,27 +34,43 @@
     <div class="container">
 
 
-		<div class="panel panel-info">
+		<div class="panel panel-success">
 	    	<div class="panel-heading">
 	    		<div class="panel-title"><font size="5">レビュー記入欄</font></div>
 	    	</div>
+
 	    	<br>
-	    	<font size="4">見出し記入欄</font>
 	    	<br>
-	    	<input type="text" name="head_comment" size="100" maxlength="50" value="見出しコメント(∩´∀｀)∩" required>
+
+	    	<div class="form-group">
+	    		<label class="col-xs-2 control-label">見出しコメント</label>
+	    		<div class="col-xs-9">
+	    			<input type="text" class="form-control" name="head_comment" size="100" maxlength="50" value="あこがれの豚さん！" required>
+	    		</div>
+	    	</div>
 	    	<br>
-	    	<font size="4">評価</font>
-	    	<select name="item_evaluation"  required>
-	    		<option value="5">5</option>
-	    		<option value="4">4</option>
-	    		<option value="3">3</option>
-	    		<option value="2">2</option>
-	    		<option value="1">1</option>
-	    	</select>
+
 	    	<br>
-	    	<font size="4">レビュー内容</font>
+	    	<div class="form-group">
+	    		<label class="col-xs-2 control-label">レビュー内容</label>
+	    		<div class="col-xs-10">
+	    			<textarea class="form-control" name="review" cols="150" rows="5" required>昨年まで普通の電気蚊取りを使っていましたが、日本的な風情でずっとこの豚さんが気になっていました。近くにも、同じ様な豚さんが安価で売っていましたが、質感的にはこちらの方が良かったので、買って良かったです♪</textarea>
+	    		</div>
+	    	</div>
 	    	<br>
-	    	<textarea name="review" cols="150" rows="5" required>本文！( ˘ω˘)ｽﾔｧ( ﾟдﾟ)ﾊｯ!</textarea>
+
+	    	<br>
+
+	    	<div class="form-group">
+				<label class="col-xs-1 control-label">商品評価</label>
+	    			<select name="item_evaluation" required>
+	    				<option value="5">5</option>
+	    				<option value="4">4</option>
+	    				<option value="3">3</option>
+	    				<option value="2">2</option>
+	    				<option value="1">1</option>
+	   				</select>
+	   		</div>
 
 	    	<div class="panel-footer">
 	    		<button type="submit" class="btn btn-success bt-sm">送信</button>
