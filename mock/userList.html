@@ -39,48 +39,48 @@
 		<br>
 		<br>
 		<br>
-	<div class="well">
-		<div class="row">
-			<div class="col-xs-1"></div>
-			<h1 class="col-xs-9 h2 bg-primary">ユーザ検索項目</h1>
-		</div>
 
-		<div class="row">
-			<div class="col-xs-1"></div>
-			<div class="col-xs-5">
-				<div class="bg-primary">ログインID</div><input class="form-control input-lg" type="text" name="login_id" placeholder="sample">
-				<br>
-				<div class="bg-primary">ユーザ名</div><input class="form-control input-lg" type="text" name="name" placeholder="名無しのごんべ">
-			</div>
-		</div>
+		<div class="panel panel-primary">
+	    	<div class="panel-heading">
+	    		<div class="panel-title"><font size="5">ユーザ検索項目</font></div>
+	    	</div>
 
-		<br>
+			<div class="panel-body">
+	    		<div class="form-group">
+	    			<label class="col-xs-2 control-label"><font size="4">ログインID</font></label>
+	    			<div class="col-xs-3">
+	    				<input type="text" class="form-control" name="login_id" placeholder="sample" required>
+	    			</div>
+	    		</div>
+	    		<br>
 
-		<div class="row">
-			<div class="col-xs-1"></div>
-			<div class="col-xs-9">
-				<div class="bg-primary">誕生日</div>
+	    		<br>
+	    		<div class="form-group">
+	    			<label class="col-xs-2 control-label"><font size="4">ユーザ名</font></label>
+	    			<div class="col-xs-3">
+	    				<input type="text" class="form-control" name="name" placeholder="名無しのごんべ" required>
+	    			</div>
+	    		</div>
+	    		<br>
+	    		<br>
+	    		<div class="form-group">
+	    			<label class="col-xs-2 control-label"><font size="4">誕生日</font></label>
+	    			<div class="col-xs-3">
+	    				<input type="date" class="form-control" name="name" required>
+	    			</div>
+	    			<div class="col-xs-1"><font size="5">～</font></div>
+	    			<div class="col-xs-3">
+	    				<input type="date" class="form-control" name="name" required>
+	    			</div>
+	    		</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-1"></div>
-			<div class="col-xs-4">
-				<input class="form-control input-lg" type="date" name="birth_date1">
-			</div>
-			<div class="col-xs-1">
-			<font size="6">～</font>
-			</div>
-			<div class="col-xs-4">
-				<input class="form-control input-lg" type="date" name="birth_date2">
-			</div>
-		</div>
-		<br>
-		<div align="center"><button type="submit" class="btn btn-primary">検索</button></div>
 
-	</div>
-		<br>
-		<br>
-		<br>
+	    	<div class="panel-footer">
+	    		<div align="center">
+	    			<button type="submit" class="btn btn-primary bt-sm">検索</button>
+	    		</div>
+	    	</div>
+	    </div>
 
 		<div class="panel panel-primary">
 	    	<div class="panel-heading">

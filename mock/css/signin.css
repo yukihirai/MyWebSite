@@ -38,3 +38,12 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.box {
+  min-height:370px;
+  background-color: snow;
+}
+
+textarea {
+  margin-bottom:20px;
+}
