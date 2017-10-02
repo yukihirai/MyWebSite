@@ -31,7 +31,7 @@
     <div class="container">
 
       		<form action="index.html" class="form-signin">
-        		<h2 class="form-signin-heading">ログイン</h2><div align="right"><a href="userRegistration.jsp">新規登録</a></div>
+        		<h2 class="form-signin-heading">ログイン</h2><div align="right"><a href="UserRegistration">新規登録</a></div>
         		<br>
         		<label for="inputEmail" class="sr-only">ログインID</label>
         		<input type="text" id="login_id" class="form-control" placeholder="ログインID" required autofocus>

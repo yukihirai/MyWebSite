@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.UserDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -31,9 +32,13 @@
 
   <body>
 
+<% UserDataBeans udb = (UserDataBeans)request.getAttribute("udb"); %>
+
 	<div class="container">
 
-	<form action="UserRegistrationConfirm" method="POST">
+	<form action="UserRegistrationResult" method="POST">
+
+
 
 	<br>
 	<br>
@@ -47,7 +52,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">ログインID</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="login_id" placeholder="sample" required>
+	    				<input type="text" class="form-control" name="login_id" value="<%=udb.getLogin_id()%>" readonly>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -56,7 +61,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">ユーザ名</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="name" placeholder="名無しのごんべ" required>
+	    				<input type="text" class="form-control" name="name" value="<%=udb.getName()%>" readonly>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -64,7 +69,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">住所</font></label>
 	    			<div class="col-xs-7">
-	    				<input type="text" class="form-control" name="address" placeholder="" required>
+	    				<input type="text" class="form-control" name="address" value="<%=udb.getAddress()%>" readonly>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -72,7 +77,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">誕生日</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="date" class="form-control" name="birth_date" required>
+	    				<input type="date" class="form-control" name="birth_date" value="<%=udb.getBirth_date()%>" readonly>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -80,29 +85,22 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">パスワード</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="password" class="form-control" name="password" required>
-	    			</div>
-	    		</div>
-	    		<br>
-	    		<br>
-	    		<div class="form-group">
-	    			<label class="col-xs-2 control-label"><font size="4">パスワード(確認)</font></label>
-	    			<div class="col-xs-3">
-	    				<input type="password" class="form-control" name="confirm_password" required>
+	    				<input type="password" class="form-control" name="password" value="<%=udb.getPassword()%>" readonly>
 	    			</div>
 	    		</div>
 			</div>
 
 	    	<div class="panel-footer">
 	    		<div align="center">
-	    			<button type="submit" class="btn btn-primary bt-sm" name="action">登録</button>
+	    			上記の入力内容でよろしいでしょうか。
+	    			<button type="submit" class="btn btn-primary bt-sm" name="confirm_button" value="cancel">キャンセル</button>
+	    			<button type="submit" class="btn btn-primary bt-sm" name="confirm_button" value="regist">登録</button>
 	    		</div>
 	    	</div>
 	    </div>
 	    <br>
 	    <br>
 	</form>
-	<a href="Login">戻る</a>
 
 
 

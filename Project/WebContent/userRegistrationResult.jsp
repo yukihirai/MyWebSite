@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.UserDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -30,6 +31,7 @@
   </head>
 
   <body>
+  <% UserDataBeans udb = (UserDataBeans)request.getAttribute("udb"); %>
 
 	<div class="container">
 
@@ -47,7 +49,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">ログインID</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="login_id" placeholder="sample" required>
+	    				<%=udb.getLogin_id()%>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -56,7 +58,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">ユーザ名</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="name" placeholder="名無しのごんべ" required>
+						<%=udb.getName()%>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -64,7 +66,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">住所</font></label>
 	    			<div class="col-xs-7">
-	    				<input type="text" class="form-control" name="address" placeholder="" required>
+						<%=udb.getAddress()%>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -72,7 +74,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">誕生日</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="date" class="form-control" name="birth_date" required>
+	    				<%=udb.getBirth_date()%>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -80,29 +82,21 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">パスワード</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="password" class="form-control" name="password" required>
-	    			</div>
-	    		</div>
-	    		<br>
-	    		<br>
-	    		<div class="form-group">
-	    			<label class="col-xs-2 control-label"><font size="4">パスワード(確認)</font></label>
-	    			<div class="col-xs-3">
-	    				<input type="password" class="form-control" name="confirm_password" required>
+						<%=udb.getPassword()%>
 	    			</div>
 	    		</div>
 			</div>
 
 	    	<div class="panel-footer">
 	    		<div align="center">
-	    			<button type="submit" class="btn btn-primary bt-sm" name="action">登録</button>
+					上記の内容で登録しました。
 	    		</div>
 	    	</div>
 	    </div>
 	    <br>
 	    <br>
 	</form>
-	<a href="Login">戻る</a>
+	<a href="Login">ログイン画面へ</a>
 
 
 
