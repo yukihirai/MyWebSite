@@ -9,17 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.UserDataBeans;
-
 /**
- * Servlet implementation class UserRegist
+ * Servlet implementation class UserList
  */
-@WebServlet("/UserRegistration")
-public class UserRegistration extends HttpServlet {
+@WebServlet("/UserList")
+public class UserList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public UserRegistration() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UserList() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -27,17 +29,11 @@ public class UserRegistration extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		UserDataBeans udb = (UserDataBeans) session.getAttribute("udb");
 
-		if(!(udb == null)) {
-			udb = (UserDataBeans) EcHelper.cutSession(session,"udb");
-			String message = (String)EcHelper.cutSession(session,"message");
+		int userId = (int)session.getAttribute("userId");
+	}
 
-			request.setAttribute("udb",udb);
-			request.setAttribute("message",message);
-		}
-		request.getRequestDispatcher(EcHelper.USERREGIST_PAGE).forward(request, response);
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
 }

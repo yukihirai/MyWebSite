@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.UserDataBeans;
+import dao.UserDAO;
 
 /**
  * Servlet implementation class UserRegistrationConfirm
@@ -50,16 +51,24 @@ public class UserRegistrationConfirm extends HttpServlet {
 			String message = "";
 
 			if(!inputPassword.equals(inputConfirmPassword)) {
-				message += "パスワードが同一ではありません。";
+				message += "パスワードをもう一度確認してください。<br>";
 			}
 
 			if(!EcHelper.isLoginIdValidation(inputLogin_id)) {
 				message += "半角英数とハイフン、アンダースコアのみ使用可能です。";
 			}
 
+			if(UserDAO.getInstance().isOverLapLoginId(inputLogin_id)) {
+				message +="このログインIDは、すでに使用されています。";
+			}
+
 			if(message.length() == 0) {
 				request.setAttribute("udb",udb);
 				request.getRequestDispatcher(EcHelper.REGIST_CONFIRM_PAGE).forward(request, response);
+			}else {
+				session.setAttribute("udb",udb);
+				session.setAttribute("message",message);
+				response.sendRedirect("UserRegistration");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

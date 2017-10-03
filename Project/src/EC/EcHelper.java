@@ -4,6 +4,9 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 import javax.xml.bind.DatatypeConverter;
@@ -12,11 +15,15 @@ public class EcHelper {
 
 	static final String LOGIN_PAGE = "/login.jsp";
 
-	static final String REGIST_PAGE = "/userRegistration.jsp";
+	static final String USERREGIST_PAGE = "/userRegistration.jsp";
 
 	static final String REGIST_CONFIRM_PAGE = "/userRegistrationConfirm.jsp";
 
 	static final String REGIST_RESULT_PAGE = "/userRegistrationResult.jsp";
+
+	static final String INDEX_PAGE = "/index.jsp";
+
+	static final String USER_DATA_PAGE = "/userData.jsp";
 
 	public static boolean isLoginIdValidation(String inputLoginId) {
 		if (inputLoginId.matches("[0-9a-zA-Z-_]+")) {
@@ -29,6 +36,8 @@ public class EcHelper {
 
 	public static Object cutSession(HttpSession session, String str) {
 		Object ob = session.getAttribute(str);
+		session.removeAttribute(str);
+
 		return ob;
 	}
 
@@ -47,5 +56,21 @@ public class EcHelper {
 		return result;
 	}
 
+	public static String convertDate(String date)  {
+		String conDate = null;
 
+		try {
+			String dateStr = date;
+			SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+			Date cDate;
+			cDate = f.parse(dateStr);
+
+			SimpleDateFormat f2 = new SimpleDateFormat("yyyy年MM月dd日");
+			conDate = f2.format(cDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return date;
+		}
+		return conDate;
+	}
 }

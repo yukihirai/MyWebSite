@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -41,9 +42,9 @@
 	<div class="container">
 
 	<ul class="nav nav-pills nav-justified">
-		<li class="active"><a href="index.html">HOME</a>
+		<li class="active"><a href="">HOME</a>
       	<li><a href="cart.html">CART</a></li>
-      	<li><a href="userData.html">YOUR DATA</a></li>
+      	<li><a href="UserData">YOUR DATA</a></li>
       	<li><a href="userList.html">USERS DATA</a></li>
     </ul>
 

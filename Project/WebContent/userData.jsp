@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.UserDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,6 +12,11 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>YOURDATA</title>
+
+    <%
+		UserDataBeans udb = (UserDataBeans)request.getAttribute("udb");
+	%>
+
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
     </style>
@@ -33,10 +40,10 @@
     <div class="container">
 
       <ul class="nav nav-pills nav-justified">
-      	<li><a href="index.html">HOME</a>
+      	<li><a href="Index">HOME</a>
       	<li><a href="cart.html">CART</a></li>
-      	<li class="active"><a href="userData.html">YOUR DATA</a></li>
-      	<li><a href="userList.html">USERS DATA</a></li>
+      	<li class="active"><a href="">YOUR DATA</a></li>
+      	<li><a href="UserList">USERS DATA</a></li>
       </ul>
 
       <br>
@@ -53,9 +60,9 @@
 
 			<div class="row">
 	    		<div class="col-xs-1"></div>
-	    		<p class="col-xs-3 break-word"><font size="5">名無しのごんべ</font></p>
+	    		<p class="col-xs-3 break-word"><font size="5"><%=udb.getName() %></font></p>
 	    		<div class="col-xs-2"></div>
-	    		<p class="col-xs-5 break-word"><font size="5">東京都×××市〇〇〇〇〇３－２０－５〇〇〇〇コーポラス２２２</font></p>
+	    		<p class="col-xs-5 break-word"><font size="5"><%=udb.getAddress() %></font></p>
 	    		<div class="col-xs-1"></div>
 	    	</div>
 
@@ -63,15 +70,24 @@
 	    		<div class="col-xs-1"></div>
 	    		<h3 class="col-xs-3 bg-primary h2">ログインID</h3>
 	    		<div class="col-xs-2"></div>
-	    		<h4 class="col-xs-5 bg-primary h2">登録日</h4>
+	    		<h4 class="col-xs-3 bg-primary h2">誕生日</h4>
 	   			<div class="col-xs-1"></div>
 	    	</div>
 
 	    	<div class="row">
 	    		<div class="col-xs-1"></div>
-	    		<p class="col-xs-3 break-word"><font size="5">sample</font></p>
+	    		<p class="col-xs-3 break-word"><font size="5"><%=udb.getLogin_id() %></font></p>
 	   			<div class="col-xs-2"></div>
-	    		<p class="col-xs-5 break-word"><font size="5">1111年22月33日44時55分66</font></p>
+	    		<p class="col-xs-3 break-word"><font size="5"><%=udb.getFormatBirth_Date()%></font></p>
+	    	</div>
+	    	<div class="row">
+	    		<div class="col-xs-1"></div>
+	    		<h3 class="col-xs-3 bg-primary h2">登録日</h3>
+	    	</div>
+
+	    	<div class="row">
+	    		<div class="col-xs-1"></div>
+	    		<p class="col-xs-3 break-word"><font size="5"><%=udb.getFormatCreate_date()%></font></p>
 	    	</div>
 	    </div>
 	    <br>

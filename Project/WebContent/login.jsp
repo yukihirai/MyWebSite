@@ -12,6 +12,10 @@
 
     <title>login</title>
 
+    <%
+		String message = (String) request.getAttribute("message");
+	%>
+
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,20 +34,21 @@
 
     <div class="container">
 
-      		<form action="index.html" class="form-signin">
-        		<h2 class="form-signin-heading">ログイン</h2><div align="right"><a href="UserRegistration">新規登録</a></div>
-        		<br>
-        		<label for="inputEmail" class="sr-only">ログインID</label>
-        		<input type="text" id="login_id" class="form-control" placeholder="ログインID" required autofocus>
-       			<br>
-        		<label for="inputPassword" class="sr-only">パスワード</label>
-        		<input type="password" id="login_password" class="form-control" placeholder="パスワード" required>
-        		<br>
-        		<br>
-        		<button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
-      </form>
-
-
+      	<form action="LoginResult" class="form-signin" method="POST">
+        	<h2 class="form-signin-heading">ログイン</h2><div align="right"><a href="UserRegistration">新規登録</a></div>
+        	<br>
+        	<%if(message != null){ %>
+        		<div align="center"><font size="3" color="red"><%=message %></font></div>
+        	<%} %>
+        	<label for="inputEmail" class="sr-only">ログインID</label>
+        	<input type="text" name="login_id" class="form-control" placeholder="ログインID" required autofocus>
+       		<br>
+        	<label for="inputPassword" class="sr-only">パスワード</label>
+        	<input type="password" name="login_password" class="form-control" placeholder="パスワード" required>
+        	<br>
+        	<br>
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
+      	</form>
 
     </div> <!-- /container -->
 

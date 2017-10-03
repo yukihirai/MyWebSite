@@ -10,34 +10,39 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.UserDataBeans;
+import dao.UserDAO;
 
 /**
- * Servlet implementation class UserRegist
+ * Servlet implementation class UserData
  */
-@WebServlet("/UserRegistration")
-public class UserRegistration extends HttpServlet {
+@WebServlet("/UserData")
+public class UserData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public UserRegistration() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public UserData() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		UserDataBeans udb = (UserDataBeans) session.getAttribute("udb");
 
-		if(!(udb == null)) {
-			udb = (UserDataBeans) EcHelper.cutSession(session,"udb");
-			String message = (String)EcHelper.cutSession(session,"message");
+		int userId = (int)session.getAttribute("userId");
+
+		try {
+			UserDataBeans udb = UserDAO.getUserDataBeansByUserId(userId);
 
 			request.setAttribute("udb",udb);
-			request.setAttribute("message",message);
-		}
-		request.getRequestDispatcher(EcHelper.USERREGIST_PAGE).forward(request, response);
+			request.getRequestDispatcher(EcHelper.USER_DATA_PAGE).forward(request, response);
 
+		}catch (Exception e) {
+			e.printStackTrace();
+			session.setAttribute("errorMessage", e.toString());
+			response.sendRedirect("Error");
+		}
 	}
 
 }
