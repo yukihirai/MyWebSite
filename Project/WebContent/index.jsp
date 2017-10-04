@@ -45,7 +45,7 @@
 		<li class="active"><a href="">HOME</a>
       	<li><a href="cart.html">CART</a></li>
       	<li><a href="UserData">YOUR DATA</a></li>
-      	<li><a href="userList.html">USERS DATA</a></li>
+      	<li><a href="UserList">USERS DATA</a></li>
     </ul>
 
     <br>

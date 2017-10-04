@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.UserDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,6 +12,9 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>YOURDETAIL</title>
+    <%
+    	UserDataBeans udb = (UserDataBeans)request.getAttribute("udb");
+    %>
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
     </style>
@@ -47,9 +52,9 @@
 
 			<div class="row">
 	    		<div class="col-xs-1"></div>
-	    		<p class="col-xs-3 break-word"><font size="5">sample</font></p>
+	    		<p class="col-xs-3 break-word"><font size="5"><%=udb.getLogin_id()%></font></p>
 	    		<div class="col-xs-2"></div>
-	    		<p class="col-xs-3 break-word"><font size="5">名無しのごんべ</font></p>
+	    		<p class="col-xs-3 break-word"><font size="5"><%=udb.getName()%></font></p>
 	    		<div class="col-xs-3"></div>
 	    	</div>
 
@@ -61,7 +66,7 @@
 
 	    	<div class="row">
 	    		<div class="col-xs-1"></div>
-	    		<p class="col-xs-4 break-word"><font size="5">1111年22月33日</font></p>
+	    		<p class="col-xs-4 break-word"><font size="5"><%=udb.getFormatBirth_Date()%></font></p>
 	    		<div class="col-xs-2"></div>
 	    		<p class="col-xs-4 break-word"><font size="5"></font></p>
 	    	</div>
@@ -75,15 +80,15 @@
 
 	    	<div class="row">
 	    		<div class="col-xs-1"></div>
-	    		<div class="col-xs-4"><font size="5">1111年22月33日44時55分66</font></div>
+	    		<div class="col-xs-4"><font size="5"><%=udb.getFormatCreate_date()%></font></div>
 	    		<div class="col-xs-1"></div>
-	    		<div class="col-xs-4"><font size="5">1111年22月33日44時55分66</font></div>
+	    		<div class="col-xs-4"><font size="5"><%=udb.getFormatupdate_date()%></font></div>
 	    	</div>
 	    </div>
 	</div>
 	    <br>
 	    <br>
-	    <a href="userList.html">戻る</a>
+	    <a href="UserList">戻る</a>
 
 
 

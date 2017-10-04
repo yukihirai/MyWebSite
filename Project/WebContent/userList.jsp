@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="beans.UserDataBeans" %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,6 +13,10 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>userList</title>
+    <%
+    ArrayList<UserDataBeans> udbList = (ArrayList<UserDataBeans>)request.getAttribute("udbList");
+    %>
+
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,10 +37,10 @@
     <div class="container">
 
 		<ul class="nav nav-pills nav-justified">
-			<li><a href="index.html">HOME</a>
+			<li><a href="Index">HOME</a>
 			<li><a href="cart.html">CART</a></li>
-			<li><a href="userData.html">YOUR DATA</a></li>
-			<li class="active"><a href="userList.html">USERS DATA</a></li>
+			<li><a href="UserData">YOUR DATA</a></li>
+			<li class="active"><a href="">USERS DATA</a></li>
 		</ul>
 
 		<br>
@@ -86,7 +93,7 @@
 	    	<div class="panel-heading">
 	    		<div class="panel-title"><font size="5">ユーザ一覧</font></div>
 	    	</div>
-	    	<table class="table table-striped">
+	    	<table class="table table-hover">
 	    		<thead>
 	    			<th>ログインID</th>
 	    			<th>ユーザ名</th>
@@ -94,16 +101,20 @@
 	    			<th></th>
 	    		</thead>
 	    		<tbody>
+	    		<%
+	    			for(UserDataBeans udb:udbList){
+	    		%>
 	    			<tr>
-	    				<td>sample</td>
-	    				<td>名無しのごんべ</td>
-	    				<td>1111年22月33日</td>
+	    				<td><%=udb.getLogin_id()%></td>
+	    				<td><%=udb.getName()%></td>
+	    				<td><%=udb.getBirth_date()%></td>
 	    				<td>
-	    					<a href="userDetail.html" class="btn btn-primary btn-xs">詳細</a>
-	    					<a href="userUpdate.html" class="btn btn-warning btn-xs">更新</a>
+	    					<a href="UserDetail?userId=<%=udb.getId()%>" class="btn btn-primary btn-xs">詳細</a>
+	    					<a href="UserUpdate?userId=<%=udb.getId()%>" class="btn btn-warning btn-xs">更新</a>
 	    					<a href="userDelete.html" class="btn btn-danger btn-xs">削除</a>
 	    				</td>
 	    			</tr>
+	    		<%} %>
 	    		</tbody>
 
 	    	</table>

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import EC.EcHelper;
@@ -58,7 +59,7 @@ public class UserDAO{
 			st.setString(1,login_id);
 			ResultSet rs = st.executeQuery();
 
-			if(!rs.next()) {
+			if(rs.next()) {
 				result = true;
 			}
 		} catch (SQLException e) {
@@ -109,7 +110,7 @@ public class UserDAO{
 
 		try {
 			con = DBManager.getConnection();
-			st = con.prepareStatement("SELECT id,name,address,birth_date,login_id,create_date FROM user WHERE id=?");
+			st = con.prepareStatement("SELECT id,name,address,birth_date,login_id,create_date,update_date FROM user WHERE id=?");
 			st.setInt(1,userId);
 
 			ResultSet rs = st.executeQuery();
@@ -121,6 +122,7 @@ public class UserDAO{
 				udb.setBirth_date(rs.getString("birth_date"));
 				udb.setLogin_id(rs.getString("login_id"));
 				udb.setCreate_date(rs.getTimestamp("create_date"));
+				udb.setUpdate_date(rs.getTimestamp("update_date"));
 			}
 			st.close();
 
@@ -139,5 +141,62 @@ public class UserDAO{
 		Connection con = null;
 		PreparedStatement st = null;
 		List<UserDataBeans>udbList = new ArrayList<UserDataBeans>();
+		try {
+			con = DBManager.getConnection();
+			st = con.prepareStatement("SELECT * FROM user WHERE id>1");
+
+			ResultSet rs = st.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				String address = rs.getString("address");
+				String birth_date = rs.getString("birth_date");
+				String login_id = rs.getString("login_id");
+				Date create_date = rs.getTimestamp("create_date");
+				Date update_date = rs.getTimestamp("update_date");
+
+				UserDataBeans udb = new UserDataBeans(id,name,address,birth_date,login_id,create_date,update_date);
+				udbList.add(udb);
+			}
+
+			return udbList;
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
+
+	public static void userUpdate(UserDataBeans udb) throws SQLException{
+		Connection con = null;
+		PreparedStatement st = null;
+
+		try {
+			con = DBManager.getConnection();
+
+			if(udb.getPassword().length()==0) {
+				st = con.prepareStatement("UPDATE user SET name=?, address=?, birth_date=? WHERE id=?");
+				st.setString(1,udb.getName());
+				st.setString(2,udb.getAddress());
+				st.setString(3,udb.getBirth_date());
+				st.setInt(4,udb.getId());
+				st.executeUpdate();
+			}else {
+				st = con.prepareStatement("UPDATE user SET name=?, address=?, birth_date=?, login_password=? WHERE id=?");
+				st = con.prepareStatement("UPDATE user SET name=?, address=?, birth_date=? WHERE id=?");
+				st.setString(1,udb.getName());
+				st.setString(2,udb.getAddress());
+				st.setString(3,udb.getBirth_date());
+				st.setString(4,udb.getPassword());
+				st.setInt(5,udb.getId());
+				st.executeUpdate();
+			}
+
+		}
 	}
 }

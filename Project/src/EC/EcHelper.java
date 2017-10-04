@@ -15,7 +15,7 @@ public class EcHelper {
 
 	static final String LOGIN_PAGE = "/login.jsp";
 
-	static final String USERREGIST_PAGE = "/userRegistration.jsp";
+	static final String USER_REGIST_PAGE = "/userRegistration.jsp";
 
 	static final String REGIST_CONFIRM_PAGE = "/userRegistrationConfirm.jsp";
 
@@ -24,6 +24,14 @@ public class EcHelper {
 	static final String INDEX_PAGE = "/index.jsp";
 
 	static final String USER_DATA_PAGE = "/userData.jsp";
+
+	static final String USER_LIST_PAGE = "/userList.jsp";
+
+	static final String USER_DETAIL_PAGE = "/userDetail.jsp";
+
+	static final String USER_UPDATE_PAGE = "/userUpdate.jsp";
+
+	static final String USER_UPDATE_CONFIRM_PAGE = "/userUpdateConfirm";
 
 	public static boolean isLoginIdValidation(String inputLoginId) {
 		if (inputLoginId.matches("[0-9a-zA-Z-_]+")) {

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.UserDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,6 +12,12 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>YOURDETAIL</title>
+
+     <%
+    	UserDataBeans udb = (UserDataBeans)request.getAttribute("udb");
+     	String message = (String) request.getAttribute("message");
+     %>
+
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
     </style>
@@ -32,6 +40,8 @@
 
 	<div class="container">
 
+	<form action="UserUpdateConfirm" method="POST">
+
 	<br>
 	<br>
 	<br>
@@ -46,7 +56,9 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">ログインID</font></label>
 	    			<div class="col-xs-3">
-	    				<font size="4">sample</font>
+	    				<font size="4"><%=udb.getLogin_id()%></font>
+	    				<input type="hidden" name="login_id" value="<%=udb.getLogin_id()%>">
+	    				<input type="hidden" name="userId" value="<%=udb.getId()%>">
 	    			</div>
 	    		</div>
 	    		<br>
@@ -55,7 +67,15 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">ユーザ名</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="name" value="名無しのごんべ" required>
+	    				<input type="text" class="form-control" name="name" value="<%=udb.getName()%>" required>
+	    			</div>
+	    		</div>
+	    		<br>
+	    		<br>
+	    		<div class="form-group">
+	    			<label class="col-xs-2 control-label"><font size="4">住所</font></label>
+	    			<div class="col-xs-3">
+	    				<input type="text" class="form-control" name="address" value="<%=udb.getAddress()%>" required>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -63,7 +83,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">誕生日</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="date" class="form-control" name="birth_date" required>
+	    				<input type="date" class="form-control" name="birth_date" value="<%=udb.getBirth_date()%>" required>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -71,7 +91,12 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">パスワード</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="password" class="form-control" name="pass1">
+	    				<input type="password" class="form-control" name="password">
+	    			</div>
+	    			<div class="col-xs-4">
+	    					<%if(message != null){ %>
+        						<font size="3" color="red"><%=message %></font>
+        					<%} %>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -79,7 +104,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">パスワード(確認)</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="password" class="form-control" name="pass2">
+	    				<input type="password" class="form-control" name="password_confirm">
 	    			</div>
 	    		</div>
 			</div>
@@ -90,9 +115,10 @@
 	    		</div>
 	    	</div>
 	    </div>
+	    </form>
 	    <br>
 	    <br>
-	    <a href="userData.html">戻る</a>
+	    <a href="UserList">戻る</a>
 
 
 

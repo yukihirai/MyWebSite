@@ -10,62 +10,57 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.UserDataBeans;
-import dao.UserDAO;
 
 /**
- * Servlet implementation class UserRegistrationResult
+ * Servlet implementation class UserUpdateResult
  */
-@WebServlet("/UserRegistrationResult")
-public class UserRegistrationResult extends HttpServlet {
+@WebServlet("/UserUpdateResult")
+public class UserUpdateResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserRegistrationResult() {
+    public UserUpdateResult() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-
 		HttpSession session = request.getSession();
-		try {
 
+		try {
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			String login_id = request.getParameter("login_id");
 			String inputName = request.getParameter("name");
-			String inputLogin_id = request.getParameter("login_id");
 			String inputAddress = request.getParameter("address");
 			String inputBirth_date = request.getParameter("birth_date");
 			String inputPassword = request.getParameter("password");
 
 			UserDataBeans udb = new UserDataBeans();
 
+			udb.setId(userId);
+			udb.setLogin_id(login_id);
 			udb.setName(inputName);
-			udb.setLogin_id(inputLogin_id);
 			udb.setAddress(inputAddress);
 			udb.setBirth_date(inputBirth_date);
 			udb.setPassword(inputPassword);
 
-			String confirmRegist = request.getParameter("confirm_button");
+			String confirmUpdate = request.getParameter("confirm_button");
 
-			switch(confirmRegist){
+			switch(confirmUpdate) {
 			case"cancel":
 				session.setAttribute("udb",udb);
-				response.sendRedirect("UserRegistration");
-				break;
+				response.sendRedirect("UserUpdate");
 
-			case"regist":
-				UserDAO.getInstance().insertUser(udb);
-				request.setAttribute("udb",udb);
-				request.getRequestDispatcher(EcHelper.REGIST_RESULT_PAGE).forward(request, response);
-				break;
+			case"update":
+
 			}
 
 		}catch (Exception e) {
-				e.printStackTrace();
-				session.setAttribute("errorMessage", e.toString());
-				response.sendRedirect("Error");
+			e.printStackTrace();
+			session.setAttribute("errorMessage", e.toString());
+			response.sendRedirect("Error");
 		}
 	}
+
 }

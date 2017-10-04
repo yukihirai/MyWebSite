@@ -82,12 +82,12 @@
 	    	</div>
 	    	<div class="row">
 	    		<div class="col-xs-1"></div>
-	    		<h3 class="col-xs-3 bg-primary h2">登録日</h3>
+	    		<h3 class="col-xs-5 bg-primary h2">登録日</h3>
 	    	</div>
 
 	    	<div class="row">
 	    		<div class="col-xs-1"></div>
-	    		<p class="col-xs-3 break-word"><font size="5"><%=udb.getFormatCreate_date()%></font></p>
+	    		<p class="col-xs-5 break-word"><font size="5"><%=udb.getFormatCreate_date()%></font></p>
 	    	</div>
 	    </div>
 	    <br>
