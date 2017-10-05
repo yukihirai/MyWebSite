@@ -31,7 +31,17 @@ public class EcHelper {
 
 	static final String USER_UPDATE_PAGE = "/userUpdate.jsp";
 
-	static final String USER_UPDATE_CONFIRM_PAGE = "/userUpdateConfirm";
+	static final String USER_UPDATE_CONFIRM_PAGE = "/userUpdateConfirm.jsp";
+
+	static final String USER_UPDATE_RESULT_PAGE = "/userUpdateResult.jsp";
+
+	static final String USER_DELETE_PAGE = "/userDelete.jsp";
+
+	static final String USER_DELETE_RESULT_PAGE = "/userDeleteResult.jsp";
+
+	static final String MASTER_PAGE = "/master.jsp";
+
+	static final String MASTER_ITEM_REGISTRATION_PAGE = "/masterItemRegistration.jsp";
 
 	public static boolean isLoginIdValidation(String inputLoginId) {
 		if (inputLoginId.matches("[0-9a-zA-Z-_]+")) {

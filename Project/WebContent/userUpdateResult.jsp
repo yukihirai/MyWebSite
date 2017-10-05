@@ -11,11 +11,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>userUpdateConfirm</title>
+    <title>userUpdateResult</title>
 
      <%
     	UserDataBeans udb = (UserDataBeans)request.getAttribute("udb");
-     	String message = (String) request.getAttribute("message");
      %>
 
     <style type="text/css">
@@ -40,7 +39,6 @@
 
 	<div class="container">
 
-	<form action="UserUpdateResult" method="POST">
 
 	<br>
 	<br>
@@ -57,8 +55,6 @@
 	    			<label class="col-xs-2 control-label"><font size="4">ログインID</font></label>
 	    			<div class="col-xs-3">
 	    				<font size="4"><%=udb.getLogin_id()%></font>
-	    				<input type="hidden" name="login_id" value="<%=udb.getLogin_id()%>">
-	    				<input type="hidden" name="userId" value="<%=udb.getId()%>">
 	    			</div>
 	    		</div>
 	    		<br>
@@ -67,7 +63,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">ユーザ名</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="name" value="<%=udb.getName()%>" readonly>
+	    				<%=udb.getName()%>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -75,7 +71,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">住所</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="address" value="<%=udb.getAddress()%>" readonly>
+	    				<%=udb.getAddress()%>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -83,22 +79,8 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">誕生日</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="date" class="form-control" name="birth_date" value="<%=udb.getBirth_date()%>" readonly>
+	    				<%=udb.getFormatBirth_Date()%>
 	    			</div>
-	    		</div>
-	    		<br>
-	    		<br>
-	    		<div class="form-group">
-	    			<label class="col-xs-2 control-label"><font size="4">パスワード</font></label>
-	    			<div class="col-xs-3">
-	    				<%if(message != null){%>
-	    					<font size="4" color="green"><%=message%></font>
-	    					<input type="hidden" name="password" value="noUpdate">
-	    				<%}else{ %>
-	    					<input type="text" class="form-control" name="password" value="<%=udb.getPassword()%>" readonly>
-	    				<%} %>
-	    			</div>
-
 	    		</div>
 	    		<br>
 	    		<br>
@@ -106,16 +88,13 @@
 
 	    	<div class="panel-footer">
 	    		<div align="center">
-	    			上記の入力内容でよろしいでしょうか。
-	    			<br>
-	    			<button type="submit" class="btn btn-primary bt-sm" name="confirm_button" value="cancel">キャンセル</button>
-	    			<button type="submit" class="btn btn-primary bt-sm" name="confirm_button" value="update">更新</button>
+	    			上記の入力内容で登録しました。
 	    		</div>
 	    	</div>
 	    </div>
 	    <br>
 	    <br>
-	    </form>
+	    <a href="UserList">ユーザ一覧に戻る</a>
 
 
 

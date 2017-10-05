@@ -15,6 +15,7 @@
     <title>userList</title>
     <%
     ArrayList<UserDataBeans> udbList = (ArrayList<UserDataBeans>)request.getAttribute("udbList");
+    int userId = (int)request.getAttribute("userId");
     %>
 
 
@@ -103,17 +104,31 @@
 	    		<tbody>
 	    		<%
 	    			for(UserDataBeans udb:udbList){
+	    				if(userId == 1){
 	    		%>
 	    			<tr>
 	    				<td><%=udb.getLogin_id()%></td>
 	    				<td><%=udb.getName()%></td>
-	    				<td><%=udb.getBirth_date()%></td>
+	    				<td><%=udb.getFormatBirth_Date()%></td>
 	    				<td>
 	    					<a href="UserDetail?userId=<%=udb.getId()%>" class="btn btn-primary btn-xs">詳細</a>
 	    					<a href="UserUpdate?userId=<%=udb.getId()%>" class="btn btn-warning btn-xs">更新</a>
-	    					<a href="userDelete.html" class="btn btn-danger btn-xs">削除</a>
+	    					<a href="UserDelete?userId=<%=udb.getId()%>" class="btn btn-danger btn-xs">削除</a>
 	    				</td>
 	    			</tr>
+	    		<%}else{ %>
+	    			<tr>
+	    				<td><%=udb.getLogin_id()%></td>
+	    				<td><%=udb.getName()%></td>
+	    				<td><%=udb.getFormatBirth_Date()%></td>
+	    				<td>
+	    					<a href="UserDetail?userId=<%=udb.getId()%>" class="btn btn-primary btn-xs">詳細</a>
+	    					<%if(userId == udb.getId()){ %>
+	    						<a href="UserUpdate?userId=<%=udb.getId()%>" class="btn btn-warning btn-xs">更新</a>
+	    					<%} %>
+	    				</td>
+	    			</tr>
+	    			<%} %>
 	    		<%} %>
 	    		</tbody>
 

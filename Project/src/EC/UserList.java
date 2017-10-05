@@ -40,6 +40,7 @@ public class UserList extends HttpServlet {
 		try {
 			ArrayList<UserDataBeans>udbList = (ArrayList<UserDataBeans>) UserDAO.getAllUserDate();
 			request.setAttribute("udbList",udbList);
+			request.setAttribute("userId",userId);
 			request.getRequestDispatcher(EcHelper.USER_LIST_PAGE).forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();

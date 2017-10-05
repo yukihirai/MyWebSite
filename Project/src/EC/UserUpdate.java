@@ -29,18 +29,19 @@ public class UserUpdate extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		int userId = Integer.parseInt(request.getParameter("userId"));
 
 		UserDataBeans udb = (UserDataBeans) session.getAttribute("udb");
 
 		if(!(udb == null)) {
 			udb = (UserDataBeans) EcHelper.cutSession(session,"udb");
-
+			String message = (String)EcHelper.cutSession(session,"message");
 			request.setAttribute("udb",udb);
+			request.setAttribute("message",message);
 			request.getRequestDispatcher(EcHelper.USER_UPDATE_PAGE).forward(request, response);
 		}
 
 		try {
+			int userId = Integer.parseInt(request.getParameter("userId"));
 			UserDataBeans udbDate = UserDAO.getUserDataBeansByUserId(userId);
 
 			request.setAttribute("udb",udbDate);

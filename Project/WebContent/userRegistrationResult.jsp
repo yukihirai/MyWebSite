@@ -74,7 +74,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">誕生日</font></label>
 	    			<div class="col-xs-3">
-	    				<%=udb.getBirth_date()%>
+	    				<%=udb.getFormatBirth_Date()%>
 	    			</div>
 	    		</div>
 	    		<br>

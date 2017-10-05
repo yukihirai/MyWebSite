@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.UserDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,6 +12,10 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>userDelete</title>
+
+    <%
+    	UserDataBeans udb = (UserDataBeans)request.getAttribute("udb");
+     %>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -29,6 +35,8 @@
 
     <div class="container">
 
+    	<form action="UserDeleteResult" method="POST">
+
 		<div class="row bg-danger">
       		<div class="row">
       			<div class="col-xs-1"></div>
@@ -36,7 +44,8 @@
       				<font size="5">ログインID</font>
       			</div>
       			<div class="col-xs-4">
-      				<font size="5">sample</font>
+      				<font size="5"><%=udb.getLogin_id()%></font>
+      				<input type="hidden" name="userId" value="<%=udb.getId()%>"
       			</div>
 	    	</div>
 	    	<br>
@@ -51,15 +60,13 @@
 	    	<div class="row">
 	    		<div class="col-xs-1"></div>
 	    		<div class="col-xs-2">
-	    			<a href="userList.html" class="btn btn-primary">キャンセル</a>
-	    		</div>
-	    		<div class="col-xs-2">
-	    			<button type="submit" class="btn btn-danger">削除</button>
+	    			<button type="submit" class="btn btn-primary bt-sm" name="confirm_button" value="cancel">キャンセル</button>
+	    			<button type="submit" class="btn btn-danger bt-sm" name="confirm_button" value="delete">削除</button>
 	    		</div>
 	    	</div>
 	    </div>
 
-
+		</form>
     </div> <!-- /container -->
 
 

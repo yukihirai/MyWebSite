@@ -91,7 +91,7 @@
 	    	</div>
 	    </div>
 	    <br>
-	    <br><div align="right"><a href="userUpdate.html" class="btn btn-primary">更新</a></div>
+	    <br><div align="right"><a href="UserUpdate?userId=<%=udb.getId()%>" class="btn btn-primary">更新</a></div>
 	    <br>
 	    <br>
 

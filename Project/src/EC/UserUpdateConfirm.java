@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.UserDataBeans;
 
@@ -25,6 +26,8 @@ public class UserUpdateConfirm extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String login_id = request.getParameter("login_id");
 		String inputName = request.getParameter("name");
@@ -40,14 +43,18 @@ public class UserUpdateConfirm extends HttpServlet {
 		udb.setName(inputName);
 		udb.setAddress(inputAddress);
 		udb.setBirth_date(inputBirth_date);
-		udb.setPassword(inputPassword);
 
 		if(!inputPassword.equals(inputPassword_confirm)) {
-			request.setAttribute("udb",udb);
-			request.setAttribute("message","パスワードが同一ではありません。");
-			request.getRequestDispatcher(EcHelper.USER_UPDATE_PAGE).forward(request, response);
+			session.setAttribute("udb",udb);
+			session.setAttribute("message","パスワードをもう一度確認してください。");
+			response.sendRedirect("UserUpdate");
 
+		}else if(inputPassword.length()==0){
+			request.setAttribute("udb",udb);
+			request.setAttribute("message","変更なし");
+			request.getRequestDispatcher(EcHelper.USER_UPDATE_CONFIRM_PAGE).forward(request, response);
 		}else {
+			udb.setPassword(inputPassword);
 			request.setAttribute("udb",udb);
 			request.getRequestDispatcher(EcHelper.USER_UPDATE_CONFIRM_PAGE).forward(request, response);
 		}

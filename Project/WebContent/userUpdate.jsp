@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>YOURDETAIL</title>
+    <title>userUpdate</title>
 
      <%
     	UserDataBeans udb = (UserDataBeans)request.getAttribute("udb");
@@ -95,7 +95,7 @@
 	    			</div>
 	    			<div class="col-xs-4">
 	    					<%if(message != null){ %>
-        						<font size="3" color="red"><%=message %></font>
+        						<font size="3" color="red"><%=message%></font>
         					<%} %>
 	    			</div>
 	    		</div>

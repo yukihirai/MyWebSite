@@ -92,6 +92,8 @@ public class UserDAO{
 					break;
 				}
 			}
+			st.close();
+
 			return userId;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -110,7 +112,7 @@ public class UserDAO{
 
 		try {
 			con = DBManager.getConnection();
-			st = con.prepareStatement("SELECT id,name,address,birth_date,login_id,create_date,update_date FROM user WHERE id=?");
+			st = con.prepareStatement("SELECT id,name,address,birth_date,login_id,login_password,create_date,update_date FROM user WHERE id=?");
 			st.setInt(1,userId);
 
 			ResultSet rs = st.executeQuery();
@@ -121,6 +123,7 @@ public class UserDAO{
 				udb.setAddress(rs.getString("address"));
 				udb.setBirth_date(rs.getString("birth_date"));
 				udb.setLogin_id(rs.getString("login_id"));
+				udb.setPassword(rs.getString("login_password"));
 				udb.setCreate_date(rs.getTimestamp("create_date"));
 				udb.setUpdate_date(rs.getTimestamp("update_date"));
 			}
@@ -159,6 +162,7 @@ public class UserDAO{
 				UserDataBeans udb = new UserDataBeans(id,name,address,birth_date,login_id,create_date,update_date);
 				udbList.add(udb);
 			}
+			st.close();
 
 			return udbList;
 
@@ -175,28 +179,67 @@ public class UserDAO{
 	public static void userUpdate(UserDataBeans udb) throws SQLException{
 		Connection con = null;
 		PreparedStatement st = null;
+		UserDataBeans updateUdb = new UserDataBeans();
 
 		try {
 			con = DBManager.getConnection();
 
-			if(udb.getPassword().length()==0) {
+			if(udb.getPassword() != "noUpdate") {
+				st = con.prepareStatement("UPDATE user SET name=?, address=?, birth_date=?, login_password=? WHERE id=?");
+				st.setString(1,udb.getName());
+				st.setString(2,udb.getAddress());
+				st.setString(3,udb.getBirth_date());
+				st.setString(4,EcHelper.convertMd5(udb.getPassword()));
+				st.setInt(5,udb.getId());
+				st.executeUpdate();
+			}else {
 				st = con.prepareStatement("UPDATE user SET name=?, address=?, birth_date=? WHERE id=?");
 				st.setString(1,udb.getName());
 				st.setString(2,udb.getAddress());
 				st.setString(3,udb.getBirth_date());
 				st.setInt(4,udb.getId());
 				st.executeUpdate();
-			}else {
-				st = con.prepareStatement("UPDATE user SET name=?, address=?, birth_date=?, login_password=? WHERE id=?");
-				st = con.prepareStatement("UPDATE user SET name=?, address=?, birth_date=? WHERE id=?");
-				st.setString(1,udb.getName());
-				st.setString(2,udb.getAddress());
-				st.setString(3,udb.getBirth_date());
-				st.setString(4,udb.getPassword());
-				st.setInt(5,udb.getId());
-				st.executeUpdate();
 			}
 
+			st = con.prepareStatement("SELECT name,address,birth_date FROM user WHERE id=?");
+			st.setInt(1,udb.getId());
+			ResultSet rs = st.executeQuery();
+
+			while(rs.next()) {
+				updateUdb.setName(rs.getString("name"));
+				updateUdb.setAddress(rs.getString("address"));
+				updateUdb.setBirth_date(rs.getString("birth_date"));
+			}
+			st.close();
+
+		}catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
+
+	public void userDelete(int userId) throws SQLException{
+		Connection con = null;
+		PreparedStatement st = null;
+
+		try {
+			con = DBManager.getConnection();
+
+			st = con.prepareStatement("DELETE FROM user WHERE id=?");
+			st.setInt(1,userId);
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
 		}
 	}
 }

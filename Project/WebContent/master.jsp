@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -49,7 +50,7 @@
     			</div>
     			<div class="col-xs-1"></div>
     			<div class="col-xs-4">
-    				<a href="masterItemRegistration.html" class="btn btn-warning"><font size="5">商品新規登録</font></a>
+    				<a href="MasterItemRegistration" class="btn btn-warning"><font size="5">商品新規登録</font></a>
     			</div>
 			</div>
 			<br>

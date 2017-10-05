@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -98,7 +99,7 @@
   <body>
 
 	<div class="container">
-
+	<form action="MasterItemRegistrationConfirm" method="POST" enctype="multipart/form-data">
 	<br>
 	<br>
 	<br>
@@ -112,7 +113,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品名</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="login_id" placeholder="name" required>
+	    				<input type="text" class="form-control" name="name" placeholder="name" required>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -121,7 +122,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">金額</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="name" placeholder="1234" required>
+	    				<input type="text" class="form-control" name="price" placeholder="1234" required>
 	    			</div>
 	    			<div class="col-xs-1">
 	    				<font size="5">円</font>
@@ -134,7 +135,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品詳細</font></label>
 	    			<div class="col-xs-9">
-	    				<textarea class="form-control" name="review" cols="100" rows="5" placeholder="詳細" required></textarea>
+	    				<textarea class="form-control" name="detail" cols="100" rows="5" placeholder="詳細" required></textarea>
 	    			</div>
 	    		</div>
 
@@ -144,9 +145,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品画像</font></label>
 	    			<div class="col-xs-3">
-	    				<form enctype="multipart/form-data" method="post">
 	    					<input type="file" name="file_name" accept="image/*" required>
-	    				</form>
 	    			</div>
 	    		</div>
 			</div>
@@ -158,6 +157,7 @@
 	    	</div>
 	    </div>
 	    <br>
+	    </form>
 	     <a href="master.html">戻る</a>
 
 
