@@ -34,6 +34,8 @@ public class LoginResult extends HttpServlet {
 		try {
 			String login_id = request.getParameter("login_id");
 			String password = request.getParameter("login_password");
+			System.out.println(login_id);
+			System.out.println(password);
 
 			int userId = UserDAO.getUserId(login_id,password);
 

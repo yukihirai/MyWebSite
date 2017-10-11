@@ -45,7 +45,7 @@
       			</div>
       			<div class="col-xs-4">
       				<font size="5"><%=udb.getLogin_id()%></font>
-      				<input type="hidden" name="userId" value="<%=udb.getId()%>"
+      				<input type="hidden" name="userId" value="<%=udb.getId()%>">
       			</div>
 	    	</div>
 	    	<br>

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="beans.ItemDataBeans" %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,6 +13,10 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>masterItemList</title>
+
+    <%
+    	ArrayList<ItemDataBeans> idbList = (ArrayList<ItemDataBeans>)request.getAttribute("idbList");
+    %>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -33,22 +40,26 @@
 
     <div class="container">
 
+	<form action="ItemSearch" method="POST">
 
 		<br>
 		<br>
 		<br>
 		<br>
 
-		<div align="right"><a href="master.html"><font size="4">戻る</font></a></div>
+		<div align="right"><a href="Master"><font size="4">戻る</font></a></div>
 		<br>
 		<br>
 		<div class="row">
       		<div class="col-xs-6"></div>
-      		<div class="col-xs-4">
-      			<input type="text" class="form-control" name="serchWord" placeholder="検索ワード">
-      			<br>
-      			<div align="right"><button type="submit" class="btn btn-success btn-xs">検索</button></div>
-      		</div>
+      		<div class="form-group">
+	    			<label class="control-label">
+	    				<font size="4"><button type="submit" class="btn btn-success btn-sm">検索</button></font>
+	    			</label>
+	    			<div class="col-xs-3">
+	    				<input  type="text" class="form-control" name="searchWord" placeholder="検索ワード">
+	    			</div>
+	    	</div>
 	    </div>
 	    <br>
 
@@ -64,19 +75,24 @@
 	    				<th></th>
 	    			</thead>
 	    			<tbody>
+	    			<%
+	    				for(ItemDataBeans idb:idbList){
+	    			%>
 	    				<tr>
-	    					<td>豚ちゃん蚊取り線香</td>
-	    					<td>1296円</td>
+	    					<td><%=idb.getName()%></td>
+	    					<td><%=idb.getPrice()%>円</td>
 	    					<td>
-	    						<a href="masterItemDetail.html" class="btn btn-success btn-xs">詳細</a>
-	    						<a href="masterItemUpdate.html" class="btn btn-warning btn-xs">更新</a>
+	    						<a href="MasterItemDetail?itemId=<%=idb.getId()%>" class="btn btn-success btn-xs">詳細</a>
+	    						<a href="MasterItemUpdate?itemId=<%=idb.getId()%>" class="btn btn-warning btn-xs">更新</a>
 	    						<a href="masterItemDelete.html" class="btn btn-danger btn-xs">削除</a>
 	    					</td>
 	    				</tr>
+					<%}%>
 	    			</tbody>
 	    		</table>
 			</div>
 	    </div>
+	</form>
 
     </div> <!-- /container -->
 

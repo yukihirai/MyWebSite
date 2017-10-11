@@ -6,9 +6,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.xml.bind.DatatypeConverter;
 
 public class EcHelper {
@@ -43,6 +46,14 @@ public class EcHelper {
 
 	static final String MASTER_ITEM_REGISTRATION_PAGE = "/masterItemRegistration.jsp";
 
+	static final String MASTER_ITEM_REGISTRATION_CONFILM_PAGE = "/masterItemRegistrationConfilm.jsp";
+
+	static final String MASTER_ITEM_LIST_PAGE = "/masterItemList.jsp";
+
+	static final String MASTER_ITEM_DETAIL_PAGE = "/masterItemDetail.jsp";
+
+	static final String MASTER_ITEM_UPDATE_PAGE = "/masterItemUpdate.jsp";
+
 	public static boolean isLoginIdValidation(String inputLoginId) {
 		if (inputLoginId.matches("[0-9a-zA-Z-_]+")) {
 			return true;
@@ -51,6 +62,7 @@ public class EcHelper {
 		return false;
 
 	}
+
 
 	public static Object cutSession(HttpSession session, String str) {
 		Object ob = session.getAttribute(str);
@@ -90,5 +102,59 @@ public class EcHelper {
 			return date;
 		}
 		return conDate;
+	}
+
+	public static String getFileName(Part part) {
+        String name = null;
+
+        for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
+            if (dispotion.trim().startsWith("filename")) {
+                name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
+                name = name.substring(name.lastIndexOf("\\") + 1);
+                break;
+            }
+        }
+        return name;
+    }
+
+	public static String getSQL(String login_id , String name , String fromBirth , String toBirth) {
+		String SQL = "SELECT * FROM user WHERE ";
+		List<String> list = new ArrayList<String>();
+
+		if(login_id.length()!=0) {
+			String loginStr = "login_id =" + "'" + login_id + "'";
+			list.add(loginStr);
+		}
+
+		if(name.length()!=0) {
+			String nameStr = "name LIKE " + "'%" + name + "%'";
+			list.add(nameStr);
+		}
+
+		if(fromBirth.length()!=0) {
+			String fromBirthStr = "birth_date >=" + "'" + fromBirth + "'";
+			list.add(fromBirthStr);
+		}
+
+		if(toBirth.length()!=0) {
+			String toBirthStr = "birth_date <=" + "'" + toBirth + "'";
+			list.add(toBirthStr);
+		}
+
+		int count = 0;
+
+		for(String str : list) {
+			if(count == 0) {
+				SQL +=str + " ";
+				count++;
+			}else {
+				SQL += "AND" + " " + str + " ";
+			}
+		}
+		if(count!=0) {
+			return SQL + "AND id>1";
+		}else {
+			return SQL + "id>1";
+		}
 	}
 }

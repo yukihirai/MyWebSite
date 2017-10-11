@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -78,6 +79,9 @@
     </script>
 
     <title>masterItemRegistration</title>
+
+    <% ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb"); %>
+
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
     </style>
@@ -106,14 +110,14 @@
 
 	    <div class="panel panel-warning">
 	    	<div class="panel-heading">
-	    		<div class="panel-title"><font size="5">商品新規登録</font></div>
+	    		<div class="panel-title"><font size="5">商品新規登録確認</font></div>
 	    	</div>
 
 			<div class="panel-body">
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品名</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="name" placeholder="name" required>
+	    				<input type="text" class="form-control" name="name" value="<%=idb.getName()%>" readonly>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -122,7 +126,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">金額</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="price" placeholder="1234" required>
+	    				<input type="text" class="form-control" name="price" value="<%=idb.getPrice()%>" readonly>
 	    			</div>
 	    			<div class="col-xs-1">
 	    				<font size="5">円</font>
@@ -135,7 +139,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品詳細</font></label>
 	    			<div class="col-xs-9">
-	    				<textarea class="form-control" name="detail" cols="100" rows="5" placeholder="詳細" required></textarea>
+	    				<textarea class="form-control" name="detail" cols="100" rows="5" readonly><%=idb.getDetail()%></textarea>
 	    			</div>
 	    		</div>
 
@@ -145,14 +149,14 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品画像</font></label>
 	    			<div class="col-xs-3">
-	    					<input type="file" name="file_name" accept="image/*" required>
+	    				<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive img-thumbnail" alt="商品画像">
 	    			</div>
 	    		</div>
 			</div>
 
 	    	<div class="panel-footer">
 	    		<div align="center">
-	    			<button type="submit" class="btn btn-warning bt-sm">登録</button>
+	    			<font size="5">上記の内容で登録いたしました</font>
 	    		</div>
 	    	</div>
 	    </div>

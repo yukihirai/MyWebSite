@@ -33,6 +33,15 @@
   <body>
 
     <div class="container">
+    <ul class="nav nav-pills nav-justified">
+		<li><a href="Index">HOME</a>
+      	<li><a href="cart.html">CART</a></li>
+      	<li><a href="UserData">YOUR DATA</a></li>
+      	<li><a href="UserList">USERS DATA</a></li>
+      	<li class="active"><a href="">商品登録</a></li>
+    </ul>
+
+    <br>
 
     	<div class="row">
     		<div class="col-xs-2"></div>
@@ -46,7 +55,7 @@
     		<div class="row">
     			<div class="col-xs-1"></div>
     			<div class="col-xs-4">
-    				<a href="masterItemList.html" class="btn btn-success"><font size="5">商品一覧</font></a>
+    				<a href="MasterItemList" class="btn btn-success"><font size="5">商品一覧</font></a>
     			</div>
     			<div class="col-xs-1"></div>
     			<div class="col-xs-4">

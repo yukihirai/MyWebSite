@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans" %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -78,6 +80,11 @@
     </script>
 
     <title>masterItemUpdate</title>
+
+    <%
+    	ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb");
+    %>
+
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
     </style>
@@ -99,6 +106,7 @@
   <body>
 
 	<div class="container">
+	<form action="MasterItemUpdateConfirm" method="POST" enctype="multipart/form-data">
 
 	<br>
 	<br>
@@ -111,8 +119,9 @@
 			<div class="panel-body">
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品名</font></label>
-	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="login_id" value="豚ちゃん蚊取り線香" required>
+	    			<div class="col-xs-6">
+	    				<input type="text" class="form-control" name="login_id" value="<%=idb.getName()%>" required>
+	    				<input type="hidden" name="itemId" value="<%=idb.getId()%>">
 	    			</div>
 	    		</div>
 	    		<br>
@@ -121,7 +130,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">金額</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="name" value="1296" required>
+	    				<input type="text" class="form-control" name="name" value="<%=idb.getPrice()%>" required>
 	    			</div>
 	    			<div class="col-xs-1">
 	    				<font size="5">円</font>
@@ -134,7 +143,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品詳細</font></label>
 	    			<div class="col-xs-9">
-	    				<textarea class="form-control" name="review" cols="100" rows="5" placeholder="詳細" required>サイズ:幅135mm×高さ165mm×奥行135mm。夏の定番。 夏の風物詩。 蚊遣りといえばこれ！日本の夏を象徴するこのカタチ。縁側にたたずむす姿が夏を感じさせる。使い勝手もＯＫ！中の針金に蚊取り線香を引っ掛けて使える。</textarea>
+	    				<textarea class="form-control" name="review" cols="100" rows="5" placeholder="詳細" required><%=idb.getDetail()%></textarea>
 	    			</div>
 	    		</div>
 
@@ -144,13 +153,11 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">新しい商品画像</font></label>
 	    			<div class="col-xs-3">
-	    				<form enctype="multipart/form-data" method="post">
 	    					<input type="file" name="file_name" accept="image/*">
-	    				</form>
 	    			</div>
 	    			<label class="col-xs-2 control-label"><font size="4">現在の商品画像</font></label>
 	    			<div class="col-xs-3">
-	    				<img src="pic/豚ちゃん蚊取り線香.jpg" class="img-responsive img-thumbnail" alt="商品画像">
+	    				<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive img-thumbnail" alt="商品画像">
 	    			</div>
 	    		</div>
 			</div>
@@ -163,9 +170,9 @@
 	    </div>
 	    <br>
 	    <br>
-	    <a href="masterItemList.html">戻る</a>
+	    <a href="MasterItemList">戻る</a>
 
-
+	</form>
 
     </div> <!-- /container -->
 

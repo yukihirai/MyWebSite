@@ -15,6 +15,7 @@
 
     <%
 		UserDataBeans udb = (UserDataBeans)request.getAttribute("udb");
+    	int userId = (int)session.getAttribute("userId");
 	%>
 
     <style type="text/css">
@@ -44,6 +45,9 @@
       	<li><a href="cart.html">CART</a></li>
       	<li class="active"><a href="">YOUR DATA</a></li>
       	<li><a href="UserList">USERS DATA</a></li>
+      	<%if(userId == 1){ %>
+      		<li><a href="Master">商品登録</a></li>
+      	<%}%>
       </ul>
 
       <br>

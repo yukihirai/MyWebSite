@@ -16,6 +16,7 @@
      <%
     	UserDataBeans udb = (UserDataBeans)request.getAttribute("udb");
      	String message = (String) request.getAttribute("message");
+     	String defaultMessage = (String)request.getAttribute("defaultMessage");
      %>
 
     <style type="text/css">
@@ -96,6 +97,9 @@
 	    			<div class="col-xs-4">
 	    					<%if(message != null){ %>
         						<font size="3" color="red"><%=message%></font>
+        					<%} %><br>
+        					<%if (defaultMessage != null){ %>
+        						<font size="3" color="blue"><%=defaultMessage%></font>
         					<%} %>
 	    			</div>
 	    		</div>

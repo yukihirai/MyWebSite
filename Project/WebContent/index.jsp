@@ -11,6 +11,11 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>HOME</title>
+
+     <%
+	    int userId = (int)session.getAttribute("userId");
+    %>
+
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
     p.textry{
@@ -46,6 +51,9 @@
       	<li><a href="cart.html">CART</a></li>
       	<li><a href="UserData">YOUR DATA</a></li>
       	<li><a href="UserList">USERS DATA</a></li>
+      	<%if(userId == 1){ %>
+      		<li><a href="Master">商品登録</a></li>
+      	<%}%>
     </ul>
 
     <br>
@@ -95,7 +103,7 @@
 				<div class="well box">
 					<a href=".html">
 						<p class="textry"><font size="4">2人掛けカジュアルソファークッション付き</font></p>
-						<img src="pic/ソファー.jpg" class="img-responsive img-thumbnail" alt="商品画像">
+						<img src="pic/GAK_mokuseinotukue_TP_V.jpg" class="img-responsive img-thumbnail" alt="商品画像">
 					</a>
 					<div align="right"><font size="5">11400円</font></div>
 				</div>

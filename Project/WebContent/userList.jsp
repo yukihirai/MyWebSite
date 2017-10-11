@@ -42,11 +42,16 @@
 			<li><a href="cart.html">CART</a></li>
 			<li><a href="UserData">YOUR DATA</a></li>
 			<li class="active"><a href="">USERS DATA</a></li>
+			<%if(userId == 1){ %>
+      			<li><a href="Master">商品登録</a></li>
+      		<%}%>
 		</ul>
 
 		<br>
 		<br>
 		<br>
+
+		<form action="UserSearch" method="POST">
 
 		<div class="panel panel-primary">
 	    	<div class="panel-heading">
@@ -57,7 +62,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">ログインID</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="login_id" placeholder="sample" required>
+	    				<input type="text" class="form-control" name="login_id" placeholder="sample">
 	    			</div>
 	    		</div>
 	    		<br>
@@ -66,7 +71,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">ユーザ名</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="name" placeholder="名無しのごんべ" required>
+	    				<input type="text" class="form-control" name="name" placeholder="名無しのごんべ" >
 	    			</div>
 	    		</div>
 	    		<br>
@@ -74,11 +79,11 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">誕生日</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="date" class="form-control" name="name" required>
+	    				<input type="date" class="form-control" name="fromBirth" >
 	    			</div>
 	    			<div class="col-xs-1"><font size="5">～</font></div>
 	    			<div class="col-xs-3">
-	    				<input type="date" class="form-control" name="name" required>
+	    				<input type="date" class="form-control" name="toBirth" >
 	    			</div>
 	    		</div>
 			</div>
@@ -89,6 +94,8 @@
 	    		</div>
 	    	</div>
 	    </div>
+
+	    </form>
 
 		<div class="panel panel-primary">
 	    	<div class="panel-heading">

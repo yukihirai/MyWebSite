@@ -242,4 +242,42 @@ public class UserDAO{
 			}
 		}
 	}
+
+	public static List<UserDataBeans> getUserSearchResult(String inputLogin_id,String inputName,String inputFromBirth,String inputToBirth) throws SQLException {
+
+		Connection con = null;
+		PreparedStatement st = null;
+		List<UserDataBeans>udbList = new ArrayList<UserDataBeans>();
+		try {
+			con = DBManager.getConnection();
+			String SQL = EcHelper.getSQL(inputLogin_id, inputName, inputFromBirth, inputToBirth);
+			st = con.prepareStatement(SQL);
+
+			ResultSet rs = st.executeQuery();
+
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				String address = rs.getString("address");
+				String birth_date = rs.getString("birth_date");
+				String login_id = rs.getString("login_id");
+				Date create_date = rs.getTimestamp("create_date");
+				Date update_date = rs.getTimestamp("update_date");
+
+				UserDataBeans udb = new UserDataBeans(id,name,address,birth_date,login_id,create_date,update_date);
+				udbList.add(udb);
+			}
+			st.close();
+
+			return udbList;
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
 }

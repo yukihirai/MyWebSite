@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans" %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,6 +12,11 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>cart</title>
+
+    <%
+    	ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb");
+    	String message = (String)request.getAttribute("message");
+    %>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -33,31 +40,32 @@
 
     <div class="container">
 
-	<div class="well">
-		<div class="row">
-			<div class="col-xs-6">
-				<img src="pic/豚ちゃん蚊取り線香.jpg" class="img-responsive" alt="商品画像">
-				<br>
-				<br>
-				<br>
-				<font size="4">ユーザ評価　4.3</font>
-			</div>
-			<div class="col-xs-6">
-
-				<div align="left"><font size="5">豚ちゃん蚊取り線香</font></div>
-				<div align="right"><font size="5">1296円</font></div>
-				<br>
-				<p class="break-word"><font size="6">サイズ:幅135mm×高さ165mm×奥行135mm。夏の定番。 夏の風物詩。 蚊遣りといえばこれ！日本の夏を象徴するこのカタチ。縁側にたたずむす姿が夏を感じさせる。使い勝手もＯＫ！中の針金に蚊取り線香を引っ掛けて使える。</font></p>
-				<br>
-			</div>
+		<div class="well">
+			<div class="row">
+				<div class="col-xs-6">
+					<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive" alt="商品画像">
+					<br>
+					<br>
+					<br>
+					<font size="4"><%=message%></font>
+				</div>
+				<div class="col-xs-6">
+					<div class="panel panel-success">
+	    				<div class="panel-heading">
+	    					<div class="panel-title">
+	    						<font size="5">><%=idb.getName()%></font>
+	    						<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="panel-body">
+	    				<p class="break-word"><font size="6"><%=idb.getDetail()%></font></p>
+					</div>
+	    		</div>
+	    	</div>
 		</div>
-	</div>
-	<a href="masterItemList.html"><font size="4">戻る</font></a>
-	<br>
-	<br>
 
-
-
+	<a href="MasterItemList"><font size="4">戻る</font></a>
 
     </div> <!-- /container -->
 

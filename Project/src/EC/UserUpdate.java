@@ -37,6 +37,11 @@ public class UserUpdate extends HttpServlet {
 			String message = (String)EcHelper.cutSession(session,"message");
 			request.setAttribute("udb",udb);
 			request.setAttribute("message",message);
+
+			if(message != null || udb != null) {
+				request.setAttribute("defaultMessage","パスワードが空欄の場合は変更されません。");
+			}
+
 			request.getRequestDispatcher(EcHelper.USER_UPDATE_PAGE).forward(request, response);
 		}
 
@@ -44,6 +49,7 @@ public class UserUpdate extends HttpServlet {
 			int userId = Integer.parseInt(request.getParameter("userId"));
 			UserDataBeans udbDate = UserDAO.getUserDataBeansByUserId(userId);
 
+			request.setAttribute("defaultMessage","パスワードが空欄の場合は変更されません。");
 			request.setAttribute("udb",udbDate);
 			request.getRequestDispatcher(EcHelper.USER_UPDATE_PAGE).forward(request, response);
 
