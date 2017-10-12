@@ -64,7 +64,7 @@ public class UserRegistrationConfirm extends HttpServlet {
 
 			if(message.length() == 0) {
 				request.setAttribute("udb",udb);
-				request.getRequestDispatcher(EcHelper.REGIST_CONFIRM_PAGE).forward(request, response);
+				request.getRequestDispatcher(EcHelper.USER_REGIST_CONFIRM_PAGE).forward(request, response);
 			}else {
 				session.setAttribute("udb",udb);
 				session.setAttribute("message",message);

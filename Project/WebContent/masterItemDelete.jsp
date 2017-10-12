@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="beans.ItemDataBeans"%>
+<%@ page import="beans.ItemDataBeans" %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -11,12 +11,12 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>cart</title>
+    <title>masterItemDelete</title>
 
     <%
     	ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb");
     	String message = (String)request.getAttribute("message");
-    %>
+	%>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -39,33 +39,49 @@
   <body>
 
     <div class="container">
+    <form action="MasterItemDeleteResult" method="POST">
 
-		<div class="well">
-			<div class="row">
-				<div class="col-xs-6">
-					<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive" alt="商品画像">
-					<br>
-					<br>
-					<br>
-					<font size="4"><%=message%></font>
-				</div>
-				<div class="col-xs-6">
-					<div class="panel panel-success">
-	    				<div class="panel-heading">
-	    					<div class="panel-title">
-	    						<font size="5">><%=idb.getName()%></font>
-	    						<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
-	    					</div>
-	    				</div>
-	    			</div>
-	    			<div class="panel-body">
-	    				<p class="break-word"><font size="6"><%=idb.getDetail()%></font></p>
-					</div>
-	    		</div>
-	    	</div>
+	<div class="row bg-danger">
+		<br>
+		<div class="row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-5">
+				<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive" alt="商品画像">
+				<br>
+				<br>
+				<br>
+				<font size="4"><%=message%></font>
+			</div>
+
+			<div class="col-xs-5">
+				<div align="left"><font size="5"><%=idb.getName()%></font></div>
+				<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
+				<br>
+				<p class="break-word"><font size="6"><%=idb.getDetail()%></font></p>
+				<br>
+			</div>
+			<div class="col-xs-1"></div>
 		</div>
+	</div>
+	<br>
+	<br>
 
-	<a href="MasterItemList"><font size="4">戻る</font></a>
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-5">
+			<font size="5">上記を削除してもよろしいですか</font>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-2">
+			<input type="hidden" name="itemId" value="<%=idb.getId()%>">
+			<button type="submit" class="btn btn-primary bt-sm" name="result_button" value="cancel">キャンセル</button>
+	    	<button type="submit" class="btn btn-danger bt-sm" name="result_button" value="delete">削除</button>
+		</div>
+	</div>
+	</form>
 
     </div> <!-- /container -->
 

@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans"%>
+<%@ page import="beans.ReviewDataBeans"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,6 +14,11 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>iteDetail</title>
+    <%
+    	ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb");
+    	ArrayList<ReviewDataBeans>rdbList = (ArrayList<ReviewDataBeans>)request.getAttribute("rdb");
+    	int userId = (int)session.getAttribute("userId");
+    %>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -36,75 +45,64 @@
 	<div class="well">
 		<div class="row">
 			<div class="col-xs-6">
-				<img src="pic/豚ちゃん蚊取り線香.jpg" class="img-responsive" alt="商品画像">
+				<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive" alt="商品画像">
 				<br>
 				<a href="cartConfilm.html" class="btn btn-success"><font size="5">カートに入れる</font></a>
 				<br>
 				<br>
-				<font size="4">ユーザ評価　4.3</font>
+				<%if(idb.getValue()!=0){ %>
+					<font size="4">ユーザ評価　<%=idb.getValue()%></font>
+				<%}else{%>
+					<font size="4">この商品はまだ評価されていません</font>
+				<%}%>
 			</div>
 			<div class="col-xs-6">
 
-				<div align="left"><font size="5">豚ちゃん蚊取り線香</font></div>
-				<div align="right"><font size="5">1296円</font></div>
+				<div align="left"><font size="5"><%=idb.getName()%></font></div>
+				<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
 				<br>
-				<p class="break-word"><font size="6">サイズ:幅135mm×高さ165mm×奥行135mm。夏の定番。 夏の風物詩。 蚊遣りといえばこれ！日本の夏を象徴するこのカタチ。縁側にたたずむす姿が夏を感じさせる。使い勝手もＯＫ！中の針金に蚊取り線香を引っ掛けて使える。</font></p>
+				<p class="break-word"><font size="6"><%=idb.getDetail()%></font></p>
 				<br>
 			</div>
 		</div>
 	</div>
-	<a href="index.html"><font size="4">戻る</font></a>
+	<a href="Index"><font size="4">戻る</font></a>
 	<br>
 	<br>
+	<%for(ReviewDataBeans rdb : rdbList){%>
 		<div class="panel panel-primary">
 	    	<div class="panel-heading">
-	    		<div class="panel-title"><font size="5">あこがれの豚さん！</font></div>
-	    		<font size="4">評価　★★★★☆</font>
-	    		<div align="right">名無しのごんべさん</div>
+	    		<div class="panel-title"><font size="5"><%=rdb.getHead_comment()%></font></div>
+	    		<font size="4">
+	    			評価　<%for(int i=0;i<=rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i>=5-rdb.getItem_value();i++){%>☆<%}%>
+	    		</font>
+	    		<div align="right"><%=rdb.getUser_name()%></div>
 	    	</div>
 	    	<div class="panel-body">
 	    		<p class="break-word">
 	    			<font size="4">
-	    				昨年まで普通の電気蚊取りを使っていましたが、日本的な風情でずっとこの豚さんが気になっていました。近くにも、同じ様な豚さんが安価で売っていましたが、質感的にはこちらの方が良かったので、買って良かったです♪
+	    				<%=rdb.getReview()%>
 	    			</font>
 	    		</p>
 	    		<br>
-	    		<div align="right">1111年22月33日44時55秒66</div>
+	    		<div align="right"><%=rdb.getFormatCreate_date()%></div>
 	    	</div>
 	    	<div class="panel-footer">
+	    	<%if(userId == rdb.getUser_id()){ %>
 	    		<div align="right">
-	    			<a href="reviewEdit.html" class="btn btn-success btn-xs">編集</a>
-	    			<a href="reviewDelete.html" class="btn btn-danger btn-xs">削除</a>
+	    			<a href="ReviewEdit?reviewId=<%=rdb.getId()%>" class="btn btn-success btn-xs">編集</a>
+	    			<a href="ReviewDelete?reviewId=<%=rdb.getId()%>" class="btn btn-danger btn-xs">削除</a>
 	    		</div>
+	    	<%}%>
 	    	</div>
 	    </div>
+	<%}%>
 
 	    <br>
-
-		<div class="panel panel-primary">
-	    	<div class="panel-heading">
-	    		<div class="panel-title"><font size="5">キンチョウの渦巻きも楽々セット可能！</font></div>
-	    		<font size="4">評価　★★★☆☆</font>
-	    		<div align="right">名無しのごんぞうさん</div>
-	    	</div>
-	    	<div class="panel-body">
-	    		<p class="break-word">
-	    			<font size="4">
-	    				豚にはサイズが各種あり、この商品はキンチョウの蚊取り線香の標準品が、折らずにラクにセットできるサイズです。付属の針金がやや貧弱ですが必要ならば蚊取り線香付属金具を中に入れることも出来ます。大きめの梱包で到着するのでビックリされるかもしれませんが、割れずにしっかり届きました。一家に一匹（笑）、この豚で快適な夏をお楽しみください。
-	    			</font>
-	    		</p>
-	    		<br>
-	    		<div align="right">1111年22月33日44時55秒66</div>
-	    	</div>
-	    	<div class="panel-footer">
-	    		<div align="right">
-	    			<a href=".html" class="btn btn-success btn-xs">編集</a>
-	    			<a href=".html" class="btn btn-danger btn-xs">削除</a>
-	    		</div>
-	    	</div>
-	    </div>
-
 	    <br>
+
+	    <form action = "Review" method="POST">
+	    <input type="hidden" name="itemId" value="<%=idb.getId()%>">
 
 		<div class="panel panel-info">
 	    	<div class="panel-heading">
@@ -143,15 +141,17 @@
 	   			</div>
 	   		</div>
 
+
 	    	<div class="panel-footer">
 	    		<button type="submit" class="btn btn-info bt-sm">送信</button>
 	    	</div>
 	    </div>
+	    </form>
 
 
 	    <br>
 
-	    <a href="index.html"><font size="4">戻る</font></a>
+	    <a href="Index"><font size="4">戻る</font></a>
 
 
 

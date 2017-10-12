@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ReviewDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -10,6 +12,9 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>reviewDelete</title>
+    <%
+    	ReviewDataBeans rdb = (ReviewDataBeans)request.getAttribute("rdb");
+    %>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -33,23 +38,46 @@
 
     <div class="container">
 
+<form action="ReviewEditResult" method="POST">
 
-		<div class="panel panel-danger">
+		<div class="panel panel-success">
 	    	<div class="panel-heading">
-	    		<div class="panel-title"><font size="5">あこがれの豚さん！</font></div>
-	    		<font size="4">評価　★★★★☆</font>
-	    		<div align="right">名無しのごんべさん</div>
+	    		<div class="panel-title"><font size="5">レビュー記入欄</font></div>
 	    	</div>
-	    	<div class="panel-body">
-	    		<p class="break-word">
-	    			<font size="4">
-	    				昨年まで普通の電気蚊取りを使っていましたが、日本的な風情でずっとこの豚さんが気になっていました。近くにも、同じ様な豚さんが安価で売っていましたが、質感的にはこちらの方が良かったので、買って良かったです♪
-	    			</font>
-	    		</p>
+
+			<div class="panel-body">
+	    		<div class="form-group">
+	    			<label class="col-xs-2 control-label">見出しコメント</label>
+	    			<div class="col-xs-9">
+	    				<input type="text" class="form-control" name="head_comment" size="100" maxlength="50" value="<%=rdb.getHead_comment()%>" readonly>
+	    			</div>
+	    		</div>
 	    		<br>
-	    		<div align="right">1111年22月33日44時55秒66</div>
+
+	    		<br>
+	    		<div class="form-group">
+	    			<label class="col-xs-2 control-label">レビュー内容</label>
+	    			<div class="col-xs-10">
+	    				<textarea class="form-control" name="review" cols="150" rows="5" readonly><%=rdb.getReview()%></textarea>
+	    			</div>
+	    		</div>
+	    		<br>
+
+	    		<br>
+
+	    		<div class="form-group">
+					<font size="4">評価　<%for(int i=0;i<=rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i>=5-rdb.getItem_value();i++){%>☆<%}%></font>
+	   			</div>
+	   		</div>
+
+	    	<div class="panel-footer">
+	    		<button type="submit" class="btn btn-success bt-sm">送信</button>
 	    	</div>
 	    </div>
+	    <input type="hidden" name="reviewId" value="<%=rdb.getId()%>">
+
+	    <br>
+	    </form>
 
 	<div class="row">
 		<div class="col-xs-2"></div>
@@ -61,7 +89,7 @@
 	<div class="row">
 		<div class="col-xs-2"></div>
 		<div class="col-xs-2">
-			<a href="itemDetail.html" class="btn btn-primary">キャンセル</a>
+			<a href="itemDetail.html" class="btn btn-primary">キャンセル</a
 	   	</div>
     	<div class="col-xs-2">
    			<button type="submit" class="btn btn-danger">削除</button>

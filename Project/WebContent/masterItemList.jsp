@@ -84,7 +84,7 @@
 	    					<td>
 	    						<a href="MasterItemDetail?itemId=<%=idb.getId()%>" class="btn btn-success btn-xs">詳細</a>
 	    						<a href="MasterItemUpdate?itemId=<%=idb.getId()%>" class="btn btn-warning btn-xs">更新</a>
-	    						<a href="masterItemDelete.html" class="btn btn-danger btn-xs">削除</a>
+	    						<a href="MasterItemDelete?itemId=<%=idb.getId()%>" class="btn btn-danger btn-xs">削除</a>
 	    					</td>
 	    				</tr>
 					<%}%>

@@ -58,7 +58,7 @@ public class UserRegistrationResult extends HttpServlet {
 			case"regist":
 				UserDAO.getInstance().insertUser(udb);
 				request.setAttribute("udb",udb);
-				request.getRequestDispatcher(EcHelper.REGIST_RESULT_PAGE).forward(request, response);
+				request.getRequestDispatcher(EcHelper.USER_REGIST_RESULT_PAGE).forward(request, response);
 				break;
 			}
 

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ReviewDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -9,7 +11,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>editReview</title>
+    <title>reviewEdit</title>
+    <%
+    	ReviewDataBeans rdb = (ReviewDataBeans)request.getAttribute("rdb");
+    %>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -32,7 +37,7 @@
   <body>
 
     <div class="container">
-
+	<form action="ReviewEditResult" method="POST">
 
 		<div class="panel panel-success">
 	    	<div class="panel-heading">
@@ -43,7 +48,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label">見出しコメント</label>
 	    			<div class="col-xs-9">
-	    				<input type="text" class="form-control" name="head_comment" size="100" maxlength="50" value="あこがれの豚さん！" required>
+	    				<input type="text" class="form-control" name="head_comment" size="100" maxlength="50" value="<%=rdb.getHead_comment()%>" required>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -52,7 +57,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label">レビュー内容</label>
 	    			<div class="col-xs-10">
-	    				<textarea class="form-control" name="review" cols="150" rows="5" required>昨年まで普通の電気蚊取りを使っていましたが、日本的な風情でずっとこの豚さんが気になっていました。近くにも、同じ様な豚さんが安価で売っていましたが、質感的にはこちらの方が良かったので、買って良かったです♪</textarea>
+	    				<textarea class="form-control" name="review" cols="150" rows="5" required><%=rdb.getReview()%></textarea>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -61,7 +66,7 @@
 
 	    		<div class="form-group">
 					<label class="col-xs-1 control-label">商品評価</label>
-	    				<select name="item_evaluation" required>
+	    				<select name="item_value" required>
 	    					<option value="5">5</option>
 	    					<option value="4">4</option>
 	    					<option value="3">3</option>
@@ -75,10 +80,12 @@
 	    		<button type="submit" class="btn btn-success bt-sm">送信</button>
 	    	</div>
 	    </div>
+	    <input type="hidden" name="reviewId" value="<%=rdb.getId()%>">
 
 	    <br>
+	    </form>
 
-	    <a href="itemDetail.html"><font size="4">戻る</font></a>
+	    <a href="ItemDetail"><font size="4">戻る</font></a>
 
 
 

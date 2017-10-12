@@ -18,13 +18,21 @@ public class EcHelper {
 
 	static final String LOGIN_PAGE = "/login.jsp";
 
+	static final String INDEX_PAGE = "/index.jsp";
+
+	static final String ITEM_DETAIL_PAGE = "itemDetail.jsp";
+
+	static final String REVIEW_EDIT_PAGE = "/reviewEdit.jsp.";
+
+	static final String REVIEW_EDIT_RESULT_PAGE = "/reviewEditResult.jsp";
+
+	static final String REVIEW_DELETE_PAGE = "/reviewDelete.jsp";
+
 	static final String USER_REGIST_PAGE = "/userRegistration.jsp";
 
-	static final String REGIST_CONFIRM_PAGE = "/userRegistrationConfirm.jsp";
+	static final String USER_REGIST_CONFIRM_PAGE = "/userRegistrationConfirm.jsp";
 
-	static final String REGIST_RESULT_PAGE = "/userRegistrationResult.jsp";
-
-	static final String INDEX_PAGE = "/index.jsp";
+	static final String USER_REGIST_RESULT_PAGE = "/userRegistrationResult.jsp";
 
 	static final String USER_DATA_PAGE = "/userData.jsp";
 
@@ -46,13 +54,19 @@ public class EcHelper {
 
 	static final String MASTER_ITEM_REGISTRATION_PAGE = "/masterItemRegistration.jsp";
 
-	static final String MASTER_ITEM_REGISTRATION_CONFILM_PAGE = "/masterItemRegistrationConfilm.jsp";
+	static final String MASTER_ITEM_REGISTRATION_CONFILM_PAGE = "/masterItemRegistrationConfirm.jsp";
 
 	static final String MASTER_ITEM_LIST_PAGE = "/masterItemList.jsp";
 
 	static final String MASTER_ITEM_DETAIL_PAGE = "/masterItemDetail.jsp";
 
 	static final String MASTER_ITEM_UPDATE_PAGE = "/masterItemUpdate.jsp";
+
+	static final String MASTER_ITEM_UPDATE_CONFIRM_PAGE = "/masterItemUpdateConfilm.jsp";
+
+	static final String MASTER_ITEM_DELETE_PAGE = "/masterItemDelete.jsp";
+
+	static final String MASTER_ITEM_DELETE_RESULT_PAGE ="/masterItemDeleteResult.jsp";
 
 	public static boolean isLoginIdValidation(String inputLoginId) {
 		if (inputLoginId.matches("[0-9a-zA-Z-_]+")) {
@@ -157,4 +171,5 @@ public class EcHelper {
 			return SQL + "id>1";
 		}
 	}
+
 }

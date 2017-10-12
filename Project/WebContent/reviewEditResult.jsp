@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="beans.ItemDataBeans"%>
+<%@ page import="beans.ReviewDataBeans"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -11,11 +11,9 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>cart</title>
-
+    <title>reviewEdit</title>
     <%
-    	ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb");
-    	String message = (String)request.getAttribute("message");
+    	ReviewDataBeans rdb = (ReviewDataBeans)request.getAttribute("rdb");
     %>
 
     <style type="text/css">
@@ -39,33 +37,35 @@
   <body>
 
     <div class="container">
+	<div class="panel panel-primary">
+	    	<div class="panel-heading">
+	    		<div class="panel-title"><font size="5"><%=rdb.getHead_comment()%></font></div>
+	    		<font size="4">
+	    			評価　<%for(int i=0;i<=rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i>=5-rdb.getItem_value();i++){%>☆<%}%>
 
-		<div class="well">
-			<div class="row">
-				<div class="col-xs-6">
-					<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive" alt="商品画像">
-					<br>
-					<br>
-					<br>
-					<font size="4"><%=message%></font>
-				</div>
-				<div class="col-xs-6">
-					<div class="panel panel-success">
-	    				<div class="panel-heading">
-	    					<div class="panel-title">
-	    						<font size="5">><%=idb.getName()%></font>
-	    						<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
-	    					</div>
-	    				</div>
-	    			</div>
-	    			<div class="panel-body">
-	    				<p class="break-word"><font size="6"><%=idb.getDetail()%></font></p>
-					</div>
-	    		</div>
+
+	    		</font>
+	    		<div align="right"><%=rdb.getUser_name()%></div>
 	    	</div>
-		</div>
+	    	<div class="panel-body">
+	    		<p class="break-word">
+	    			<font size="4">
+	    				<%=rdb.getReview()%>
+	    			</font>
+	    		</p>
+	    		<br>
+	    		<div align="right"><%=rdb.getFormatCreate_date()%></div>
+	    	</div>
+	    	<div class="panel-footer">
+	    	<font size="4">上記の内容で更新いたしました。</font>
+	    	</div>
+	    </div>
 
-	<a href="MasterItemList"><font size="4">戻る</font></a>
+	    <br>
+
+	    <a href="ItemDetail"><font size="4">戻る</font></a>
+
+
 
     </div> <!-- /container -->
 

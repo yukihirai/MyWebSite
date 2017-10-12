@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -14,7 +16,8 @@
 
      <%
 	    int userId = (int)session.getAttribute("userId");
-    %>
+     	ArrayList<ItemDataBeans> itemList = (ArrayList<ItemDataBeans>)request.getAttribute("itemList");
+     %>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -62,9 +65,14 @@
     	<div class="row">
       		<div class="col-xs-6"></div>
       		<div class="col-xs-4">
-      			<input type="text" class="form-control" name="serchWord" placeholder="検索ワード">
-      			<br>
-      			<a href="searchResult.html"><div align="right"><button type="submit" class="btn btn-primary btn-xs">検索</button></div></a>
+      			<div class="form-group">
+	    			<label class="control-label">
+	    				<font size="4"><button type="submit" class="btn btn-success btn-sm">検索</button></font>
+	    			</label>
+	    			<div class="col-xs-3">
+	    				<input  type="text" class="form-control" name="searchWord" placeholder="検索ワード">
+	    			</div>
+	    	</div>
       		</div>
 	    </div>
 	    <br>
@@ -72,42 +80,17 @@
 	    <br>
 
 		<div class="row">
+			<%for(ItemDataBeans idb:itemList){ %>
 			<div class="col-xs-3">
 				<div class="well box">
-					<a href="itemDetail.html">
-						<p class="textry"><font size="4">豚ちゃん蚊取り線香</font></p>
-						<img src="pic/豚ちゃん蚊取り線香.jpg" class="img-responsive img-thumbnail" alt="商品画像">
+					<a href="ItemDetail?itemId=<%=idb.getId()%>">
+						<p class="textry"><font size="4"><%=idb.getName()%></font></p>
+						<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive img-thumbnail" alt="商品画像">
 					</a>
-					<div align="right"><font size="5">1296円</font></div>
+					<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
 				</div>
 			</div>
-			<div class="col-xs-3">
-				<div class="well box">
-					<a href=".html">
-						<p class="textry"><font size="4">猫の置物</font></p>
-						<img src="pic/猫の置物.jpg" class="img-responsive img-thumbnail" alt="商品画像">
-					</a>
-					<div align="right"><font size="5">798円</font></div>
-				</div>
-			</div>
-			<div class="col-xs-3">
-				<div class="well box">
-					<a href=".html">
-						<p class="textry"><font size="4">ハロウィン人形（3体セット）</font></p>
-						<img src="pic/ハロウィン人形.jpg" class="img-responsive img-thumbnail" alt="商品画像">
-					</a>
-					<div align="right"><font size="5">9800円</font></div>
-				</div>
-			</div>
-			<div class="col-xs-3">
-				<div class="well box">
-					<a href=".html">
-						<p class="textry"><font size="4">2人掛けカジュアルソファークッション付き</font></p>
-						<img src="pic/GAK_mokuseinotukue_TP_V.jpg" class="img-responsive img-thumbnail" alt="商品画像">
-					</a>
-					<div align="right"><font size="5">11400円</font></div>
-				</div>
-			</div>
+			<%}%>
 		</div>
 
     </div> <!-- /container -->

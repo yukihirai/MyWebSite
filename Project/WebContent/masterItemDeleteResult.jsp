@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans" %>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -9,7 +11,11 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>masterItemDelete</title>
+    <title>masterItemDeleteResult</title>
+
+    <%
+    	ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb");
+	%>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
@@ -38,18 +44,22 @@
 		<div class="row">
 			<div class="col-xs-1"></div>
 			<div class="col-xs-5">
-				<img src="pic/豚ちゃん蚊取り線香.jpg" class="img-responsive" alt="商品画像">
+				<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive" alt="商品画像">
 				<br>
 				<br>
 				<br>
-				<font size="4">ユーザ評価　4.3</font>
+				<%if(idb.getValue()!=0){ %>
+				<font size="4">ユーザ評価　<%=idb.getValue()%></font>
+				<%}else{%>
+				<font size="4">この商品はまだ評価されていません</font>
+				<%}%>
 			</div>
 
 			<div class="col-xs-5">
-				<div align="left"><font size="5">豚ちゃん蚊取り線香</font></div>
-				<div align="right"><font size="5">1296円</font></div>
+				<div align="left"><font size="5"><%=idb.getName()%></font></div>
+				<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
 				<br>
-				<p class="break-word"><font size="6">サイズ:幅135mm×高さ165mm×奥行135mm。夏の定番。 夏の風物詩。 蚊遣りといえばこれ！日本の夏を象徴するこのカタチ。縁側にたたずむす姿が夏を感じさせる。使い勝手もＯＫ！中の針金に蚊取り線香を引っ掛けて使える。</font></p>
+				<p class="break-word"><font size="6"><%=idb.getDetail()%></font></p>
 				<br>
 			</div>
 			<div class="col-xs-1"></div>
@@ -61,22 +71,11 @@
 	<div class="row">
 		<div class="col-xs-2"></div>
 		<div class="col-xs-5">
-			<font size="5">を削除してもよろしいですか</font>
+			<font size="5">上記の内容を削除しました。</font>
 		</div>
 	</div>
 	<br>
-	<div class="row">
-		<div class="col-xs-2"></div>
-		<div class="col-xs-2">
-			<a href="masterItemList.html" class="btn btn-primary">キャンセル</a>
-	   	</div>
-    	<div class="col-xs-2">
-   			<button type="submit" class="btn btn-danger">削除</button>
-		</div>
-	</div>
-
-
-
+	<a href="MasterItemList">商品一覧画面に戻る</a>
 
     </div> <!-- /container -->
 

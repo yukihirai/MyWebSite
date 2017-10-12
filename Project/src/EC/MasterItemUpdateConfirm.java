@@ -1,6 +1,7 @@
 package EC;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import beans.ItemDataBeans;
+import dao.ItemDAO;
 
 /**
  * Servlet implementation class MasterItemRegistrationConfirm
@@ -40,20 +42,20 @@ public class MasterItemUpdateConfirm extends HttpServlet {
 
 		ItemDataBeans idb = new ItemDataBeans();
 
+		idb.setId(itemId);
 		idb.setName(inputName);
 		idb.setDetail(inputDetail);
 		idb.setPrice(inputPrice);
 		idb.setFilm_name(film_name);
 
-
-//		try {
-//			ItemDAO.getInstance().insertItem(idb);
-//			request.setAttribute("idb",idb);
-//			request.getRequestDispatcher(EcHelper.MASTER_ITEM_REGISTRATION_CONFILM_PAGE).forward(request, response);
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-
+		try {
+			ItemDAO.itemUpdate(idb);
+			request.setAttribute("idb",idb);
+			request.getRequestDispatcher(EcHelper.MASTER_ITEM_UPDATE_CONFIRM_PAGE).forward(request, response);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
