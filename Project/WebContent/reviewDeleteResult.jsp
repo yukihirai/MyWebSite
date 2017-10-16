@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>reviewEdit</title>
+    <title>reviewDeleteResult</title>
     <%
     	ReviewDataBeans rdb = (ReviewDataBeans)request.getAttribute("rdb");
     %>
@@ -36,8 +36,8 @@
 
   <body>
 
-    <div class="container">
-	<form action="ReviewEditResult" method="POST">
+<div class="container">
+
 
 		<div class="panel panel-success">
 	    	<div class="panel-heading">
@@ -48,7 +48,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label">見出しコメント</label>
 	    			<div class="col-xs-9">
-	    				<input type="text" class="form-control" name="head_comment" size="100" maxlength="50" value="<%=rdb.getHead_comment()%>" required>
+	    				<input type="text" class="form-control" name="head_comment" size="100" maxlength="50" value="<%=rdb.getHead_comment()%>" readonly>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -57,7 +57,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label">レビュー内容</label>
 	    			<div class="col-xs-10">
-	    				<textarea class="form-control" name="review" cols="150" rows="5" required><%=rdb.getReview()%></textarea>
+	    				<textarea class="form-control" name="review" cols="150" rows="5" readonly><%=rdb.getReview()%></textarea>
 	    			</div>
 	    		</div>
 	    		<br>
@@ -65,32 +65,24 @@
 	    		<br>
 
 	    		<div class="form-group">
-					<label class="col-xs-1 control-label">商品評価</label>
-	    				<select name="item_value" required>
-	    					<option value="5">5</option>
-	    					<option value="4">4</option>
-	    					<option value="3">3</option>
-	    					<option value="2">2</option>
-	    					<option value="1">1</option>
-	   					</select>
+					<font size="4">評価　<%for(int i=0;i<rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i<5-rdb.getItem_value();i++){%>☆<%}%></font>
 	   			</div>
 	   		</div>
 
-	    	<div class="panel-footer">
-	    		<button type="submit" class="btn btn-success bt-sm">更新</button>
-	    	</div>
 	    </div>
-	    <input type="hidden" name="reviewId" value="<%=rdb.getId()%>">
-	    <input type="hidden" name="itemId" value="<%=rdb.getItem_id()%>">
 
 	    <br>
-	    </form>
 
-	    <a href="ItemDetail"><font size="4">戻る</font></a>
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-5">
+			<font size="5">を削除いたしました。</font>
+		</div>
+	</div>
+	<br>
+	<a href="ItemDetail?itemId=<%=rdb.getItem_id()%>" class="btn btn-warning"><font size="3">商品ページへ戻る</font></a>
 
-
-
-    </div> <!-- /container -->
+</div> <!-- /container -->
 
 
   </body>

@@ -19,6 +19,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 
 		String inputLogin_id = (String) session.getAttribute("login_id");
 

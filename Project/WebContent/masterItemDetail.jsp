@@ -59,7 +59,7 @@
 	    				</div>
 	    			</div>
 	    			<div class="panel-body">
-	    				<p class="break-word"><font size="6"><%=idb.getDetail()%></font></p>
+	    				<p class="break-word"><font size="5"><%=idb.getDetail()%></font></p>
 					</div>
 	    		</div>
 	    	</div>

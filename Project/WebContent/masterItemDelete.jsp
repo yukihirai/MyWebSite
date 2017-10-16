@@ -50,14 +50,18 @@
 				<br>
 				<br>
 				<br>
-				<font size="4"><%=message%></font>
+				<%if(idb.getValue()==0){%>
+				<font size="4">この商品はまだ評価されていません。</font>
+				<%}else{%>
+				<font size="4"><%=idb.getValue()%></font>
+				<%}%>
 			</div>
 
 			<div class="col-xs-5">
 				<div align="left"><font size="5"><%=idb.getName()%></font></div>
 				<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
 				<br>
-				<p class="break-word"><font size="6"><%=idb.getDetail()%></font></p>
+				<p class="break-word"><font size="5"><%=idb.getDetail()%></font></p>
 				<br>
 			</div>
 			<div class="col-xs-1"></div>
@@ -77,6 +81,10 @@
 		<div class="col-xs-2"></div>
 		<div class="col-xs-2">
 			<input type="hidden" name="itemId" value="<%=idb.getId()%>">
+			<input type="hidden" name="name" value="<%=idb.getName()%>">
+			<input type="hidden" name="price" value="<%=idb.getPrice()%>">
+			<input type="hidden" name="detail" value="<%=idb.getDetail()%>">
+			<input type="hidden" name="film_name" value="<%=idb.getFilm_name()%>">
 			<button type="submit" class="btn btn-primary bt-sm" name="result_button" value="cancel">キャンセル</button>
 	    	<button type="submit" class="btn btn-danger bt-sm" name="result_button" value="delete">削除</button>
 		</div>

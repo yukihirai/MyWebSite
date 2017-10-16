@@ -12,14 +12,15 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>HOME</title>
+    <title>cart</title>
 
-     <%
+	<%
 	    int userId = (int)session.getAttribute("userId");
-     	ArrayList<ItemDataBeans> itemList = (ArrayList<ItemDataBeans>)request.getAttribute("itemList");
+     	ArrayList<ItemDataBeans> cart = (ArrayList<ItemDataBeans>)session.getAttribute("cart");
+     	String message = (String)request.getAttribute("message");
      %>
 
-    <style type="text/css">
+     <style type="text/css">
     p.break-word{word-wrap:break-word;}
     p.textry{
   		width: 250px;
@@ -47,51 +48,62 @@
 
   <body>
 
-	<div class="container">
+    <div class="container">
+    <form action="CartItemDelete" method="POST">
 
 	<ul class="nav nav-pills nav-justified">
-		<li class="active"><a href="">HOME</a>
-      	<li><a href="Cart">CART</a></li>
+		<li><a href="Index">HOME</a>
+      	<li class="active"><a href="">CART</a></li>
       	<li><a href="UserData">YOUR DATA</a></li>
       	<li><a href="UserList">USERS DATA</a></li>
       	<%if(userId == 1){ %>
       		<li><a href="Master">商品登録</a></li>
       	<%}%>
-    </ul>
+	</ul>
 
-    <br>
-    <br>
-    <br>
-    	<div class="row">
-      		<div class="col-xs-6"></div>
-      		<div class="col-xs-4">
-      			<div class="form-group">
-	    			<label class="control-label">
-	    				<font size="4"><button type="submit" class="btn btn-success btn-sm">検索</button></font>
-	    			</label>
-	    			<div class="col-xs-8">
-	    				<input  type="text" class="form-control" name="searchWord" placeholder="検索ワード">
-	    			</div>
-	    	</div>
-      		</div>
-	    </div>
-	    <br>
-	    <div align="center"><font size="5"></font></div>
-	    <br>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		<font size="5">買い物かご</font><br>
+		<font size="4" color="red"><%=message%></font>
+	</div>
+
+		<br>
+		<div class="row">
+			<div align="center"><a href="BuyConfilm" class="btn btn-primary"><font size="5">購入画面へ</font></a></div>
+			<div align="right"><button class="btn btn-danger" type="submit" name="action">削除</button></div>
+			<br>
+		</div>
 
 		<div class="row">
-			<%for(ItemDataBeans idb:itemList){ %>
+		<%
+		int i = 0;
+		for(ItemDataBeans idb : cart){
+			i++;
+		%>
 			<div class="col-xs-3">
 				<div class="well box">
-					<a href="ItemDetail?itemId=<%=idb.getId()%>">
 						<p class="textry"><font size="4"><%=idb.getName()%></font></p>
 						<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive img-thumbnail" alt="商品画像">
-					</a>
 					<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
+					<div align="center">
+						<input type="checkbox" id="<%=i%>" name="delete_item_id_list" value="<%=idb.getId()%>" />
+					</div>
 				</div>
 			</div>
-			<%}%>
+		<%
+			if(i % 4 == 0){
+		%>
 		</div>
+		<div class="row"></div>
+		<%
+			}
+		%>
+		<%
+			}
+		%>
+	</form>
 
     </div> <!-- /container -->
 

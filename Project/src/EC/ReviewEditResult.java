@@ -24,16 +24,20 @@ public class ReviewEditResult extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 		String head_comment = (String)request.getParameter("head_comment");
 		String review = (String)request.getParameter("review");
 		int item_value = Integer.parseInt(request.getParameter("item_value"));
+		int itemId = Integer.parseInt(request.getParameter("itemId"));
 
 		ReviewDataBeans rdb = new ReviewDataBeans();
 		rdb.setId(reviewId);
 		rdb.setHead_comment(head_comment);
 		rdb.setReview(review);
 		rdb.setItem_value(item_value);
+		rdb.setItem_id(itemId);
 
 		try {
 			ReviewDAO.reviewUpdate(rdb);

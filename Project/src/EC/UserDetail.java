@@ -25,6 +25,7 @@ public class UserDetail extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 
 		int userId = Integer.parseInt(request.getParameter("userId"));
 

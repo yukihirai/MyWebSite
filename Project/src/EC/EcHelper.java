@@ -20,13 +20,17 @@ public class EcHelper {
 
 	static final String INDEX_PAGE = "/index.jsp";
 
+	static final String CART_PAGE = "/cart.jsp";
+
 	static final String ITEM_DETAIL_PAGE = "itemDetail.jsp";
 
-	static final String REVIEW_EDIT_PAGE = "/reviewEdit.jsp.";
+	static final String REVIEW_EDIT_PAGE = "/reviewEdit.jsp";
 
 	static final String REVIEW_EDIT_RESULT_PAGE = "/reviewEditResult.jsp";
 
 	static final String REVIEW_DELETE_PAGE = "/reviewDelete.jsp";
+
+	static final String REVIEW_DELETE_RESULT_PAGE = "/reviewDeleteResult.jsp";
 
 	static final String USER_REGIST_PAGE = "/userRegistration.jsp";
 
@@ -62,7 +66,7 @@ public class EcHelper {
 
 	static final String MASTER_ITEM_UPDATE_PAGE = "/masterItemUpdate.jsp";
 
-	static final String MASTER_ITEM_UPDATE_CONFIRM_PAGE = "/masterItemUpdateConfilm.jsp";
+	static final String MASTER_ITEM_UPDATE_CONFIRM_PAGE = "/masterItemUpdateConfirm.jsp";
 
 	static final String MASTER_ITEM_DELETE_PAGE = "/masterItemDelete.jsp";
 

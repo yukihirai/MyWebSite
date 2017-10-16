@@ -24,6 +24,7 @@ public class MasterItemUpdate extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 
 		try {

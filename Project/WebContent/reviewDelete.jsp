@@ -36,9 +36,9 @@
 
   <body>
 
-    <div class="container">
+<div class="container">
 
-<form action="ReviewEditResult" method="POST">
+<form action="ReviewDeleteResult" method="POST">
 
 		<div class="panel panel-success">
 	    	<div class="panel-heading">
@@ -66,18 +66,16 @@
 	    		<br>
 
 	    		<div class="form-group">
-					<font size="4">評価　<%for(int i=0;i<=rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i>=5-rdb.getItem_value();i++){%>☆<%}%></font>
+					<font size="4">評価　<%for(int i=0;i<rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i<5-rdb.getItem_value();i++){%>☆<%}%></font>
+	   				<input type="hidden" name="review_value" value="<%=rdb.getItem_value()%>">
+	   				<input type="hidden" name="itemId" value="<%=rdb.getItem_id()%>">
 	   			</div>
 	   		</div>
 
-	    	<div class="panel-footer">
-	    		<button type="submit" class="btn btn-success bt-sm">送信</button>
-	    	</div>
 	    </div>
 	    <input type="hidden" name="reviewId" value="<%=rdb.getId()%>">
 
 	    <br>
-	    </form>
 
 	<div class="row">
 		<div class="col-xs-2"></div>
@@ -89,16 +87,13 @@
 	<div class="row">
 		<div class="col-xs-2"></div>
 		<div class="col-xs-2">
-			<a href="itemDetail.html" class="btn btn-primary">キャンセル</a
-	   	</div>
-    	<div class="col-xs-2">
-   			<button type="submit" class="btn btn-danger">削除</button>
-		</div>
+	   		<button type="submit" class="btn btn-primary bt-sm" name="confirm_button" value="cancel">キャンセル</button>
+	   		<button type="submit" class="btn btn-danger bt-sm" name="confirm_button" value="delete">削除</button>
+	    </div>
 	</div>
 
-
-
-    </div> <!-- /container -->
+</form>
+</div> <!-- /container -->
 
 
   </body>

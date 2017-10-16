@@ -34,6 +34,7 @@ public class UserList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 
 		int userId = (int)session.getAttribute("userId");
 

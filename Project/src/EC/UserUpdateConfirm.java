@@ -27,6 +27,7 @@ public class UserUpdateConfirm extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String login_id = request.getParameter("login_id");

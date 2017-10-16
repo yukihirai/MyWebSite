@@ -120,7 +120,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品名</font></label>
 	    			<div class="col-xs-6">
-	    				<input type="text" class="form-control" name="login_id" value="<%=idb.getName()%>" required>
+	    				<input type="text" class="form-control" name="name" value="<%=idb.getName()%>" required>
 	    				<input type="hidden" name="itemId" value="<%=idb.getId()%>">
 	    			</div>
 	    		</div>
@@ -130,7 +130,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">金額</font></label>
 	    			<div class="col-xs-3">
-	    				<input type="text" class="form-control" name="name" value="<%=idb.getPrice()%>" required>
+	    				<input type="text" class="form-control" name="price" value="<%=idb.getPrice()%>" required>
 	    			</div>
 	    			<div class="col-xs-1">
 	    				<font size="5">円</font>
@@ -143,7 +143,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品詳細</font></label>
 	    			<div class="col-xs-9">
-	    				<textarea class="form-control" name="review" cols="100" rows="5" placeholder="詳細" required><%=idb.getDetail()%></textarea>
+	    				<textarea class="form-control" name="detail" cols="100" rows="5" placeholder="詳細" required><%=idb.getDetail()%></textarea>
 	    			</div>
 	    		</div>
 

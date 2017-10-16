@@ -26,30 +26,27 @@ public class MasterItemDelete extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		int itemId = (int)session.getAttribute("itemId");
+		request.setCharacterEncoding("UTF-8");
+		ItemDataBeans idb = (ItemDataBeans)session.getAttribute("idb");
 
-		if(!(itemId == 0)) {
-			itemId = (int)EcHelper.cutSession(session,"itemId");
-
-		}else {
-			itemId = Integer.parseInt(request.getParameter("itemId"));
-		}
-
-		try {
-			ItemDataBeans idb = ItemDAO.getItemDataBeansByUserId(itemId);
+		if(!(idb == null)) {
+			idb = (ItemDataBeans)EcHelper.cutSession(session,"idb");
 			request.setAttribute("idb",idb);
-
-			if(idb.getValue()==0) {
-				request.setAttribute("message","この商品はまだ評価されていません。");
-			}else {
-				request.setAttribute("message","ユーザ評価　"+idb.getValue());
-			}
 
 			request.getRequestDispatcher(EcHelper.MASTER_ITEM_DELETE_PAGE).forward(request, response);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 
+		}else {
+			int itemId = Integer.parseInt(request.getParameter("itemId"));
+			try {
+				idb = ItemDAO.getItemDataBeansByUserId(itemId);
+				request.setAttribute("idb",idb);
+
+				request.getRequestDispatcher(EcHelper.MASTER_ITEM_DELETE_PAGE).forward(request, response);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

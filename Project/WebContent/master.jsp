@@ -35,7 +35,7 @@
     <div class="container">
     <ul class="nav nav-pills nav-justified">
 		<li><a href="Index">HOME</a>
-      	<li><a href="cart.html">CART</a></li>
+      	<li><a href="Cart">CART</a></li>
       	<li><a href="UserData">YOUR DATA</a></li>
       	<li><a href="UserList">USERS DATA</a></li>
       	<li class="active"><a href="">商品登録</a></li>

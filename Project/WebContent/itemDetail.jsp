@@ -16,7 +16,7 @@
     <title>iteDetail</title>
     <%
     	ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb");
-    	ArrayList<ReviewDataBeans>rdbList = (ArrayList<ReviewDataBeans>)request.getAttribute("rdb");
+    	ArrayList<ReviewDataBeans>rdbList = (ArrayList<ReviewDataBeans>)request.getAttribute("rdbList");
     	int userId = (int)session.getAttribute("userId");
     %>
 
@@ -47,7 +47,7 @@
 			<div class="col-xs-6">
 				<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive" alt="商品画像">
 				<br>
-				<a href="cartConfilm.html" class="btn btn-success"><font size="5">カートに入れる</font></a>
+				<a href="ItemAdd?itemId=<%=idb.getId()%>" class="btn btn-success"><font size="5">カートに入れる</font></a>
 				<br>
 				<br>
 				<%if(idb.getValue()!=0){ %>
@@ -61,7 +61,7 @@
 				<div align="left"><font size="5"><%=idb.getName()%></font></div>
 				<div align="right"><font size="5"><%=idb.getPrice()%>円</font></div>
 				<br>
-				<p class="break-word"><font size="6"><%=idb.getDetail()%></font></p>
+				<p class="break-word"><font size="5"><%=idb.getDetail()%></font></p>
 				<br>
 			</div>
 		</div>
@@ -69,34 +69,44 @@
 	<a href="Index"><font size="4">戻る</font></a>
 	<br>
 	<br>
-	<%for(ReviewDataBeans rdb : rdbList){%>
-		<div class="panel panel-primary">
-	    	<div class="panel-heading">
-	    		<div class="panel-title"><font size="5"><%=rdb.getHead_comment()%></font></div>
-	    		<font size="4">
-	    			評価　<%for(int i=0;i<=rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i>=5-rdb.getItem_value();i++){%>☆<%}%>
-	    		</font>
-	    		<div align="right"><%=rdb.getUser_name()%></div>
-	    	</div>
-	    	<div class="panel-body">
-	    		<p class="break-word">
+
+	<%if(!(rdbList == null)){%>
+
+		<%for(ReviewDataBeans rdb : rdbList){%>
+			<div class="panel panel-primary">
+	    		<div class="panel-heading">
+	    			<div class="panel-title"><font size="5"><%=rdb.getHead_comment()%></font></div>
 	    			<font size="4">
-	    				<%=rdb.getReview()%>
+	    				評価　<%for(int i=0;i<rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i<5-rdb.getItem_value();i++){%>☆<%}%>
 	    			</font>
-	    		</p>
-	    		<br>
-	    		<div align="right"><%=rdb.getFormatCreate_date()%></div>
-	    	</div>
-	    	<div class="panel-footer">
-	    	<%if(userId == rdb.getUser_id()){ %>
-	    		<div align="right">
-	    			<a href="ReviewEdit?reviewId=<%=rdb.getId()%>" class="btn btn-success btn-xs">編集</a>
-	    			<a href="ReviewDelete?reviewId=<%=rdb.getId()%>" class="btn btn-danger btn-xs">削除</a>
+	    			<br>
+	    			<font size="4">
+	    				名前　<%=rdb.getUser_name()%>
+	    			</font>
 	    		</div>
-	    	<%}%>
-	    	</div>
-	    </div>
-	<%}%>
+	    		<div class="panel-body">
+	    			<p class="break-word">
+	    				<font size="4">
+	    					<%=rdb.getReview()%>
+	    				</font>
+	    			</p>
+	    			<br>
+	    			<div align="left"><%=rdb.getFormatCreate_date()%></div>
+	    		</div>
+	    		<div class="panel-footer">
+	    		<%if(userId == rdb.getUser_id()){ %>
+	    			<div align="right">
+	    				<a href="ReviewEdit?reviewId=<%=rdb.getId()%>" class="btn btn-success btn-xs">編集</a>
+	    				<a href="ReviewDelete?reviewId=<%=rdb.getId()%>" class="btn btn-danger btn-xs">削除</a>
+	    			</div>
+	    		<%}%>
+	    		</div>
+	   		 </div>
+		<%}%>
+
+	<%}else{%>
+		<font size="4">この商品へのレビューはまだ投稿されていません。</font>
+	<%} %>
 
 	    <br>
 	    <br>
@@ -131,7 +141,7 @@
 
 	    		<div class="form-group">
 					<label class="col-xs-1 control-label">商品評価</label>
-	    				<select name="item_evaluation" required>
+	    				<select name="item_value" required>
 	    					<option value="5">5</option>
 	    					<option value="4">4</option>
 	    					<option value="3">3</option>

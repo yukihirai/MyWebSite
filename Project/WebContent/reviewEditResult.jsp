@@ -41,7 +41,7 @@
 	    	<div class="panel-heading">
 	    		<div class="panel-title"><font size="5"><%=rdb.getHead_comment()%></font></div>
 	    		<font size="4">
-	    			評価　<%for(int i=0;i<=rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i>=5-rdb.getItem_value();i++){%>☆<%}%>
+	    			評価　<%for(int i=0;i<rdb.getItem_value();i++){%>★<%}%><%for(int i=0;i<5-rdb.getItem_value();i++){%>☆<%}%>
 
 
 	    		</font>
@@ -54,7 +54,6 @@
 	    			</font>
 	    		</p>
 	    		<br>
-	    		<div align="right"><%=rdb.getFormatCreate_date()%></div>
 	    	</div>
 	    	<div class="panel-footer">
 	    	<font size="4">上記の内容で更新いたしました。</font>
@@ -63,7 +62,7 @@
 
 	    <br>
 
-	    <a href="ItemDetail"><font size="4">戻る</font></a>
+	    <a href="ItemDetail?itemId=<%=rdb.getItem_id()%>"><font size="4">戻る</font></a>
 
 
 

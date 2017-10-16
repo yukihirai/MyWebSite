@@ -29,12 +29,13 @@ public class ItemDetail extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String getId = (String)session.getAttribute("itemId");
+		request.setCharacterEncoding("UTF-8");
+		ReviewDataBeans rdb = (ReviewDataBeans)session.getAttribute("rdb");
 		int itemId = 0;
 
-		if(!(getId==null)) {
-			String conId = (String) EcHelper.cutSession(session,getId);
-			itemId = Integer.parseInt(conId);
+		if(!(rdb == null)) {
+			rdb = (ReviewDataBeans) EcHelper.cutSession(session,"rdb");
+			itemId = rdb.getItem_id();
 		}else {
 			itemId = Integer.parseInt(request.getParameter("itemId"));
 		}

@@ -29,6 +29,7 @@ public class UserUpdate extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
 
 		UserDataBeans udb = (UserDataBeans) session.getAttribute("udb");
 

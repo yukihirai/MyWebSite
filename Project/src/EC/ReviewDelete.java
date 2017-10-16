@@ -24,6 +24,7 @@ public class ReviewDelete extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 
 		try {

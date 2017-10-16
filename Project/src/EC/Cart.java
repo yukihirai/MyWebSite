@@ -1,6 +1,7 @@
 package EC;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,41 +10,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import beans.UserDataBeans;
-import dao.UserDAO;
+import beans.ItemDataBeans;
 
 /**
- * Servlet implementation class UserData
+ * Servlet implementation class Cart
  */
-@WebServlet("/UserData")
-public class UserData extends HttpServlet {
+@WebServlet("/Cart")
+public class Cart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserData() {
+    public Cart() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		request.setCharacterEncoding("UTF-8");
-
-		int userId = (int)session.getAttribute("userId");
-
 		try {
-			UserDataBeans udb = UserDAO.getUserDataBeansByUserId(userId);
+			ArrayList<ItemDataBeans>cart = (ArrayList<ItemDataBeans>)session.getAttribute("cart");
+			if(cart == null) {
+				cart = new ArrayList<ItemDataBeans>();
+				session.setAttribute("cart",cart);
+			}
 
-			request.setAttribute("udb",udb);
-			request.getRequestDispatcher(EcHelper.USER_DATA_PAGE).forward(request, response);
+			String message = "";
 
-		}catch (Exception e) {
+			if(cart.size() == 0) {
+				message = "カートに商品がありません";
+			}
+
+			request.setAttribute("message",message);
+			request.getRequestDispatcher(EcHelper.CART_PAGE).forward(request, response);
+		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("errorMessage", e.toString());
 			response.sendRedirect("Error");
 		}
 	}
-
 }

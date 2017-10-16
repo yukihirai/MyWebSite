@@ -26,13 +26,14 @@ public class ReviewDAO{
 		try {
 			con = DBManager.getConnection();
 
-			st = con.prepareStatement("INSERT INTO review (user_id,item_id,head_comment,item_evaluation,review,create_date) VALUES (?,?,?,?,?,?)");
+			st = con.prepareStatement("INSERT INTO review (user_id,user_name,item_id,head_comment,item_value,review,create_date) VALUES (?,?,?,?,?,?,?)");
 			st.setInt(1,rdb.getUser_id());
-			st.setInt(2,rdb.getItem_id());
-			st.setString(3,rdb.getHead_comment());
-			st.setInt(4,rdb.getItem_value());
-			st.setString(5,rdb.getReview());
-			st.setTimestamp(6,new Timestamp(System.currentTimeMillis()));
+			st.setString(2,rdb.getUser_name());
+			st.setInt(3,rdb.getItem_id());
+			st.setString(4,rdb.getHead_comment());
+			st.setInt(5,rdb.getItem_value());
+			st.setString(6,rdb.getReview());
+			st.setTimestamp(7,new Timestamp(System.currentTimeMillis()));
 			st.executeUpdate();
 
 		} catch (SQLException e) {
@@ -64,7 +65,7 @@ public class ReviewDAO{
 				count++;
 			}
 			double allVa = ie/count;
-			double conAllVa = new BigDecimal(String.valueOf(allVa)).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			double conAllVa = new BigDecimal(String.valueOf(allVa)).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue();
 
 			return conAllVa;
 
@@ -92,7 +93,7 @@ public class ReviewDAO{
 			while(rs.next()) {
 				int id = rs.getInt("id");
 				int user_id = rs.getInt("user_id");
-				String user_name = rs.getString("user_id");
+				String user_name = rs.getString("user_name");
 				int item_id = rs.getInt("item_id");
 				String head_comment = rs.getString("head_comment");
 				int item_value = rs.getInt("item_value");
@@ -180,6 +181,27 @@ public class ReviewDAO{
 			st.close();
 
 		}catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
+
+	public void reviewDelete(int reviewId) throws SQLException{
+		Connection con = null;
+		PreparedStatement st = null;
+
+		try {
+			con = DBManager.getConnection();
+
+			st = con.prepareStatement("DELETE FROM review WHERE id=?");
+			st.setInt(1,reviewId);
+			st.executeUpdate();
+
+		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			throw new SQLException(e);
 		} finally {

@@ -42,7 +42,7 @@
 
       <ul class="nav nav-pills nav-justified">
       	<li><a href="Index">HOME</a>
-      	<li><a href="cart.html">CART</a></li>
+      	<li><a href="Cart">CART</a></li>
       	<li class="active"><a href="">YOUR DATA</a></li>
       	<li><a href="UserList">USERS DATA</a></li>
       	<%if(userId == 1){ %>

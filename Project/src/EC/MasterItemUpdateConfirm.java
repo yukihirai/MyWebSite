@@ -52,7 +52,7 @@ public class MasterItemUpdateConfirm extends HttpServlet {
 			ItemDAO.itemUpdate(idb);
 			request.setAttribute("idb",idb);
 			request.getRequestDispatcher(EcHelper.MASTER_ITEM_UPDATE_CONFIRM_PAGE).forward(request, response);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
