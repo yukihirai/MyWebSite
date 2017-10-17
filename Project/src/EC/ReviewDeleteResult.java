@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.ReviewDataBeans;
+import dao.ItemDAO;
 import dao.ReviewDAO;
 
 /**
@@ -51,6 +52,9 @@ public class ReviewDeleteResult extends HttpServlet {
 
 			case"delete":
 				ReviewDAO.getInstance().reviewDelete(reviewId);
+				double conAllVa = ReviewDAO.getItemValue(rdb.getItem_id());
+				ItemDAO.getInstance().insertValue(conAllVa, rdb.getItem_id());
+				rdb.setAll_value(conAllVa);
 
 				request.setAttribute("rdb",rdb);
 				request.getRequestDispatcher(EcHelper.REVIEW_DELETE_RESULT_PAGE).forward(request, response);

@@ -56,6 +56,7 @@ public class ReviewDAO{
 			st = con.prepareStatement("SELECT item_Value FROM review WHERE item_id = ?");
 			st.setInt(1,itemId);
 			ResultSet rs = st.executeQuery();
+			System.out.println(rs);
 
 			int ie = 0;
 			int count = 0;
@@ -64,8 +65,10 @@ public class ReviewDAO{
 				ie += rs.getInt("item_value");
 				count++;
 			}
-			double allVa = ie/count;
-			double conAllVa = new BigDecimal(String.valueOf(allVa)).setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue();
+			double allVa = (double)ie/count;
+			double conAllVa = new BigDecimal(String.valueOf(allVa)).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+
+			System.out.println(conAllVa);
 
 			return conAllVa;
 
@@ -163,7 +166,7 @@ public class ReviewDAO{
 				st = con.prepareStatement("UPDATE review SET head_comment=?, review=?, item_value=?,create_date=? WHERE id=?");
 				st.setString(1,rdb.getHead_comment());
 				st.setString(2,rdb.getReview());
-				st.setInt(3,rdb.getItem_value());
+				st.setDouble(3,rdb.getItem_value());
 				st.setTimestamp(4,new Timestamp(System.currentTimeMillis()));
 				st.setInt(5,rdb.getId());
 				st.executeUpdate();

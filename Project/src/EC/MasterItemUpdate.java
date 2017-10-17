@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.ItemDataBeans;
 import dao.ItemDAO;
@@ -25,6 +26,7 @@ public class MasterItemUpdate extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 
 		try {
@@ -34,6 +36,8 @@ public class MasterItemUpdate extends HttpServlet {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			session.setAttribute("errorMessage", e.toString());
+			response.sendRedirect("Error");
 		}
 	}
 }

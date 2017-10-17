@@ -6,9 +6,9 @@ public class ItemDataBeans {
 	private String detail;
 	private int price;
 	private String film_name;
-	private int value;
+	private double value;
 
-	public ItemDataBeans(int id, String name, String detail, int price, String film_name,int value) {
+	public ItemDataBeans(int id, String name, String detail, int price, String film_name,double value) {
 		this.id = id;
 		this.name = name;
 		this.detail = detail;
@@ -49,10 +49,10 @@ public class ItemDataBeans {
 	public void setFilm_name(String film_name) {
 		this.film_name = film_name;
 	}
-	public int getValue() {
+	public double getValue() {
 		return value;
 	}
-	public void setValue(int value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 

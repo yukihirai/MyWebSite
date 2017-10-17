@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.ItemDataBeans"%>
-<%@page import="java.util.ArrayList"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -71,7 +71,7 @@
 
 		<br>
 		<div class="row">
-			<div align="center"><a href="BuyConfilm" class="btn btn-primary"><font size="5">購入画面へ</font></a></div>
+			<div align="center"><a href="Buy" class="btn btn-primary"><font size="5">購入画面へ</font></a></div>
 			<div align="right"><button class="btn btn-danger" type="submit" name="action">削除</button></div>
 			<br>
 		</div>

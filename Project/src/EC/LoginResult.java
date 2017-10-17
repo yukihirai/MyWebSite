@@ -40,7 +40,6 @@ public class LoginResult extends HttpServlet {
 			int userId = UserDAO.getUserId(login_id,password);
 
 			if(userId !=0) {
-				//session.setAttribute("isLogin",true);
 				session.setAttribute("userId",userId);
 
 				response.sendRedirect("Index");

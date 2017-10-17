@@ -39,7 +39,7 @@ public class ItemDAO {
 		}
 	}
 
-	public static List<ItemDataBeans> getAllItemDate() throws SQLException {
+	public static List<ItemDataBeans> getAllItemData() throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		List<ItemDataBeans>idbList = new ArrayList<ItemDataBeans>();
@@ -92,7 +92,7 @@ public class ItemDAO {
 				idb.setDetail(rs.getString("detail"));
 				idb.setPrice(rs.getInt("price"));
 				idb.setFilm_name(rs.getString("film_name"));
-				idb.setValue(rs.getInt("value"));
+				idb.setValue(rs.getDouble("value"));
 			}
 			st.close();
 
@@ -124,7 +124,7 @@ public class ItemDAO {
 				String detail = rs.getString("detail");
 				int price = rs.getInt("price");
 				String film_name = rs.getString("film_name");
-				int value = rs.getInt("value");
+				double value = rs.getDouble("value");
 
 				ItemDataBeans idb = new ItemDataBeans(id,name,detail,price,film_name,value);
 				idbList.add(idb);
@@ -222,7 +222,7 @@ public class ItemDAO {
 				idb.setDetail(rs.getString("detail"));
 				idb.setPrice(rs.getInt("price"));
 				idb.setFilm_name(rs.getString("film_name"));
-				idb.setValue(rs.getInt("value"));
+				idb.setValue(rs.getDouble("value"));
 				itemList.add(idb);
 			}
 			return itemList;

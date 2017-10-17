@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -9,10 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>buyConfilm</title>
-    <style type="text/css">
-    p.break-word{word-wrap:break-word;}
-    </style>
+    <title>userDelete</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,41 +28,27 @@
 
   <body>
 
-	<div class="container">
+    <div class="container">
 
 
-	    	<div class="panel panel-primary">
-	    		<div class="panel-heading">
-	    			<div class="panel-title"><font size="5">合計購入金額</font></div>
-	    		</div>
-	    		<div class="panel-body">
-	    			<table class="table table-hover">
-	    				<thead>
-	    					<th>商品金額</th>
-	    					<th>配送料</th>
-	    					<th>合計金額</th>
-	    				</thead>
-	    				<tbody>
-	    					<tr>
-	    						<td>1296円</td>
-	    						<td>500円</td>
-	    						<td>1796円</td>
-	    					</tr>
-	    				</tbody>
-	    			</table>
-	    		</div>
-			</div>
-
-
-	<div class="row">
-		<div class="col-xs-3"></div>
-		<div class="col-xs-3">
-			<a href="index.html" class="btn btn-success">買い物を続ける</a>
-		</div>
-		<div class="col-xs-3">
-			<a href="logout.html" class="btn btn-danger">ログアウト</a>
-		</div>
-	</div>
+		<br>
+		<br>
+		<br>
+		<div class="row bg-danger">
+      		<div class="col-xs-3"></div>
+      		<div class="col-xs-8">
+	    		<font size="7">ログアウトしました。</font>
+	    		<br>
+	    		<br>
+	    		<br>
+	    	</div>
+	    </div>
+	    <div class="row bg-danger">
+	    	<div class="col-xs-4"></div>
+	    	<div class="col-xs-3">
+	    		<div align="center"><a href="Login" class="btn btn-primary">ログイン画面へ</a></div>
+	    	</div>
+	    </div>
 
 
     </div> <!-- /container -->

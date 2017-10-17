@@ -14,13 +14,27 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.xml.bind.DatatypeConverter;
 
+import beans.ItemDataBeans;
+
 public class EcHelper {
 
 	static final String LOGIN_PAGE = "/login.jsp";
 
+	static final String LOGOUT_PAGE = "/logout.jsp";
+
 	static final String INDEX_PAGE = "/index.jsp";
 
+	static final String BUY_PAGE = "/buy.jsp";
+
+	static final String BUY_CONFIRM_PAGE = "/buyConfirm.jsp";
+
+	static final String BUY_DETAIL_PAGE = "/buyDetail.jsp";
+
+	static final String BUY_RESULT_PAGE = "/buyResult.jsp";
+
 	static final String CART_PAGE = "/cart.jsp";
+
+	static final String ERROR_PAGE = "/error.jsp";
 
 	static final String ITEM_DETAIL_PAGE = "itemDetail.jsp";
 
@@ -79,6 +93,14 @@ public class EcHelper {
 
 		return false;
 
+	}
+
+	public static int getTotalitemPrice(ArrayList<ItemDataBeans> items) {
+		int totalPrice = 0;
+		for(ItemDataBeans idb : items) {
+			totalPrice += idb.getPrice();
+		}
+		return totalPrice;
 	}
 
 

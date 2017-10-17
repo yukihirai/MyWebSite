@@ -51,9 +51,9 @@
 				<br>
 				<br>
 				<%if(idb.getValue()!=0){ %>
-					<font size="4">ユーザ評価　<%=idb.getValue()%></font>
+				<font size="4">ユーザ評価　<%=idb.getValue()%></font>
 				<%}else{%>
-					<font size="4">この商品はまだ評価されていません</font>
+				<font size="4">この商品はまだ評価されていません</font>
 				<%}%>
 			</div>
 			<div class="col-xs-6">

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.UserDataBeans"%>
+<%@ page import="beans.BuyDataBeans" %>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -16,6 +18,7 @@
     <%
 		UserDataBeans udb = (UserDataBeans)request.getAttribute("udb");
     	int userId = (int)session.getAttribute("userId");
+    	ArrayList<BuyDataBeans> bdbList = (ArrayList<BuyDataBeans>)request.getAttribute("bdbList");
 	%>
 
     <style type="text/css">
@@ -111,12 +114,14 @@
 	    			<th>合計金額</th>
 	    		</thead>
 	    		<tbody>
+	    			<%for(BuyDataBeans bdb : bdbList){%>
 	    			<tr>
-	    				<td><a href="buyDetail.html" class="btn btn-primary btn-xs">詳細</a></td>
-	    				<td>1111年22月33日44時55分66</td>
-	    				<td>日時指定配送</td>
-	    				<td>1796円</td>
+	    				<td><a href="BuyDetail?buyId=<%=bdb.getId()%>" class="btn btn-primary btn-xs">詳細</a></td>
+	    				<td><%=bdb.getFormatCreate_date()%></td>
+	    				<td><%=bdb.getDelivery_method_name()%></td>
+	    				<td><%=bdb.getTotal_price()%>円</td>
 	    			</tr>
+	    			<%}%>
 	    		</tbody>
 
 	    	</table>

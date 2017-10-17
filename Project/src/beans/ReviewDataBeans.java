@@ -13,6 +13,7 @@ public class ReviewDataBeans {
 	private int item_value;
 	private Date create_date;
 
+	private double all_value;
 
 	public ReviewDataBeans(int id, int user_id,String user_name, int item_id, String head_comment, int item_value, String review,Date create_date) {
 		this.id = id;
@@ -77,5 +78,11 @@ public class ReviewDataBeans {
 	public String getFormatCreate_date() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
 		return sdf.format(create_date);
+	}
+	public double getAll_value() {
+		return all_value;
+	}
+	public void setAll_value(double all_value) {
+		this.all_value = all_value;
 	}
 }

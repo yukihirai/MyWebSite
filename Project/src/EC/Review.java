@@ -59,6 +59,7 @@ public class Review extends HttpServlet {
 			ReviewDAO.getInstance().insertReview(rdb);
 			double conAllVa = ReviewDAO.getItemValue(itemId);
 			ItemDAO.getInstance().insertValue(conAllVa, itemId);
+			rdb.setAll_value(conAllVa);
 			session.setAttribute("rdb",rdb);
 			response.sendRedirect("ItemDetail");
 		}catch (Exception e) {

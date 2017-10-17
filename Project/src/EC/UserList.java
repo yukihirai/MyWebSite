@@ -45,6 +45,7 @@ public class UserList extends HttpServlet {
 			request.getRequestDispatcher(EcHelper.USER_LIST_PAGE).forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			response.sendRedirect("Error");
 		}
 	}
 

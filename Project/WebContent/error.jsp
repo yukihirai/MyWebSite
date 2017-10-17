@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -45,7 +46,7 @@
 	    <div class="row bg-danger">
 	    	<div class="col-xs-4"></div>
 	    	<div class="col-xs-3">
-	    		<div align="center"><a href="login.html" class="btn btn-primary">ログイン画面へ</a></div>
+	    		<div align="center"><a href="Index" class="btn btn-primary">Topページへ</a></div>
 	    	</div>
 	    </div>
 

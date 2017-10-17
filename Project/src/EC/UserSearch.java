@@ -41,7 +41,6 @@ public class UserSearch extends HttpServlet {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			session.setAttribute("errorMessage", e.toString());
 			response.sendRedirect("Error");
 		}
 

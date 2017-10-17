@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans"%>
+<%@ page import="beans.DeliveryMethodDataBeans"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -9,9 +13,15 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>buyConfilm</title>
+    <title>buy</title>
+
+    <%
+		ArrayList<ItemDataBeans> cart = (ArrayList<ItemDataBeans>) session.getAttribute("cart");
+		ArrayList<DeliveryMethodDataBeans> dmdbList = (ArrayList<DeliveryMethodDataBeans>) request.getAttribute("dmdbList");
+	%>
+
     <style type="text/css">
-    p.break-word{word-wrap:break-word;}
+    	p.break-word{word-wrap:break-word;}
     </style>
 
     <!-- Bootstrap core CSS -->
@@ -31,6 +41,7 @@
   <body>
 
 	<div class="container">
+	<form action="BuyConfirm" method="POST">
 
 
 	    	<div class="panel panel-primary">
@@ -44,10 +55,12 @@
 	    					<th>金額</th>
 	    				</thead>
 	    				<tbody>
+	    				<%for(ItemDataBeans idb : cart){%>
 	    					<tr>
-	    						<td>豚ちゃんの蚊取り線香</td>
-	    						<td>1296円</td>
+	    						<td><%=idb.getName()%></td>
+	    						<td><%=idb.getPrice()%>円</td>
 	    					</tr>
+	    				<%}%>
 	    				</tbody>
 
 	    			</table>
@@ -56,25 +69,22 @@
 
 			<div class="panel panel-success">
 	    		<div class="panel-heading">
-	    			<div class="panel-title"><font size="5">合計金額及び配達方法の確認</font></div>
+	    			<div class="panel-title"><font size="5">配達方法の確認</font></div>
 	    		</div>
 	    		<div class="panel-body">
 	    			<table class="table table-hover">
 	    				<thead>
 	    					<th></th>
-	    					<th>合計金額</th>
 	    					<th>配達方法</th>
 	    				</thead>
 	    				<tbody>
 	    					<tr>
 	    						<td></td>
-	    						<td>1296円</td>
 	    						<td>
-	    							<select  class="form-control"name="delevary_method" required>
-	    								<option value="1">配送方法を選択してください</option>
-	    								<option value="2">特急配達</option>
-	    								<option value="3">通常配達</option>
-										<option value="4">日時指定配達</option>
+	    							<select  class="form-control" name="delevary_method_id">
+	    								<%for(DeliveryMethodDataBeans dmdb : dmdbList){%>
+	    									<option value="<%=dmdb.getId()%>"><%=dmdb.getName()%></option>
+	    								<%}%>
 	    							</select>
 	    						</td>
 	    					</tr>
@@ -88,12 +98,13 @@
 			<div class="row">
 				<div class="col-xs-3"></div>
 				<div class="col-xs-3">
-					<a href="cart.html" class="btn btn-warning btn-xs"><font size="4">戻る</font></a>
+					<a href="Cart" class="btn btn-warning btn-xs"><font size="4">戻る</font></a>
 				</div>
 				<div class="col-xs-3">
-					<a href="buyResult.html" class="btn btn-success btn-xs"><font size="4">購入</font></a>
+					<button class="btn btn-success btn-xs" type="submit" name="action"><font size="4">購入</font></a>
 				</div>
 			</div>
+	</form>
 
     </div> <!-- /container -->
 

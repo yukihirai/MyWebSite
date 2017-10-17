@@ -46,7 +46,6 @@ public class UserDeleteResult extends HttpServlet {
 
 		}catch (Exception e) {
 			e.printStackTrace();
-			session.setAttribute("errorMessage", e.toString());
 			response.sendRedirect("Error");
 		}
 	}

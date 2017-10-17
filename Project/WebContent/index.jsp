@@ -62,6 +62,7 @@
     <br>
     <br>
     <br>
+    <div align="right"><a href="Logout"><font size="3" color="red">ログアウト</font></a></div>
     	<div class="row">
       		<div class="col-xs-6"></div>
       		<div class="col-xs-4">

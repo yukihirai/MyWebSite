@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.BuyDataBeans"%>
+<%@ page import="beans.ItemDataBeans"%>
+<%@ page import="beans.DeliveryMethodDataBeans"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -9,7 +14,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>YOURDATA</title>
+    <title>BuyDetail</title>
+
+ 	<%
+    	ArrayList<ItemDataBeans> buyItemList = (ArrayList<ItemDataBeans>) request.getAttribute("buyItemList");
+		BuyDataBeans bdb = (BuyDataBeans) request.getAttribute("resultBdb");
+    %>
+
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
     </style>
@@ -46,9 +57,9 @@
 	    			</thead>
 	    			<tbody>
 	    				<tr>
-	    					<td>1111年22月33日44時55分66</td>
-	    					<td>日時指定配送</td>
-	    					<td>11111111111111円</td>
+	    					<td><%=bdb.getFormatCreate_date()%></td>
+	    					<td><%=bdb.getDelivery_method_name()%></td>
+	    					<td><%=bdb.getTotal_price() + bdb.getDelivery_method_price()%>円</td>
 	    				</tr>
 	    			</tbody>
 
@@ -62,8 +73,6 @@
 		<br>
 
 		<div class="row">
-		<div class="col-xs-2"></div>
-		<div class="col-xs-8">
 	    	<div class="panel panel-success">
 	    		<div class="panel-heading">
 	    			<div class="panel-title"><font size="5">購入商品詳細</font></div>
@@ -74,19 +83,20 @@
 	    				<th>金額</th>
 	    			</thead>
 	    			<tbody>
+	    			<%for(ItemDataBeans idb : buyItemList){%>
 	    				<tr>
-	    					<td>豚ちゃん蚊取り線香</td>
-	    					<td>1296円</td>
+	    					<td><%=idb.getName()%></td>
+	    					<td><%=idb.getPrice()%>円</td>
 	    				</tr>
+	    			<%}%>
 	    			</tbody>
 
 	    		</table>
 
 	    	</div>
 	    </div>
-		</div>
 
-		<a href="userData.html">戻る</a>
+		<a href="UserData">戻る</a>
 
 
 

@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.ReviewDataBeans;
+import dao.ItemDAO;
 import dao.ReviewDAO;
 
 /**
@@ -25,6 +27,7 @@ public class ReviewEditResult extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 		String head_comment = (String)request.getParameter("head_comment");
@@ -41,10 +44,14 @@ public class ReviewEditResult extends HttpServlet {
 
 		try {
 			ReviewDAO.reviewUpdate(rdb);
+			double conAllVa = ReviewDAO.getItemValue(itemId);
+			ItemDAO.getInstance().insertValue(conAllVa, itemId);
+			rdb.setAll_value(conAllVa);
 			request.setAttribute("rdb",rdb);
 			request.getRequestDispatcher(EcHelper.REVIEW_EDIT_RESULT_PAGE).forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			response.sendRedirect("Error");
 		}
 	}
 

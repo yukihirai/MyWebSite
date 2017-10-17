@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.ReviewDataBeans;
 import dao.ReviewDAO;
@@ -25,6 +26,7 @@ public class ReviewEdit extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 
 		try {
@@ -33,6 +35,8 @@ public class ReviewEdit extends HttpServlet {
 			request.getRequestDispatcher(EcHelper.REVIEW_EDIT_PAGE).forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			session.setAttribute("errorMessage", e.toString());
+			response.sendRedirect("Error");
 		}
 	}
 }

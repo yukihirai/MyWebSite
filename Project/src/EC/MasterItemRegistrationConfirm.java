@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import beans.ItemDataBeans;
@@ -29,6 +30,7 @@ public class MasterItemRegistrationConfirm extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 
 		String inputName = request.getParameter("name");
 		int inputPrice = Integer.parseInt(request.getParameter("price"));
@@ -52,6 +54,8 @@ public class MasterItemRegistrationConfirm extends HttpServlet {
 			request.getRequestDispatcher(EcHelper.MASTER_ITEM_REGISTRATION_CONFILM_PAGE).forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			session.setAttribute("errorMessage", e.toString());
+			response.sendRedirect("Error");
 		}
 
 	}

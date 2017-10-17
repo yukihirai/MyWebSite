@@ -39,7 +39,6 @@ public class ItemDetail extends HttpServlet {
 		}else {
 			itemId = Integer.parseInt(request.getParameter("itemId"));
 		}
-
 		try {
 			ItemDataBeans idb = ItemDAO.getItemDataBeansByUserId(itemId);
 			ArrayList<ReviewDataBeans>rdbList = (ArrayList<ReviewDataBeans>)ReviewDAO.getAllReviewData(itemId);
@@ -48,6 +47,8 @@ public class ItemDetail extends HttpServlet {
 			request.getRequestDispatcher(EcHelper.ITEM_DETAIL_PAGE).forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			session.setAttribute("errorMessage", e.toString());
+			response.sendRedirect("Error");
 		}
 	}
 }
