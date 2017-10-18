@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 import beans.ItemDataBeans;
 import dao.ItemDAO;
 
-/**
- * Servlet implementation class MasterItemDeleteResult
- */
 @WebServlet("/MasterItemDeleteResult")
 public class MasterItemDeleteResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,6 +23,7 @@ public class MasterItemDeleteResult extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
+
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 		String name = request.getParameter("name");
 		int price = Integer.parseInt(request.getParameter("price"));

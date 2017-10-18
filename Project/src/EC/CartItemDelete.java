@@ -25,6 +25,7 @@ public class CartItemDelete extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+
 		try {
 			String [] deleteItemIdList = request.getParameterValues("delete_item_id_list");
 			ArrayList<ItemDataBeans> cart = (ArrayList<ItemDataBeans>)session.getAttribute("cart");

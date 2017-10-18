@@ -11,19 +11,12 @@ import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 
-/**
- * Servlet implementation class LoginResult
- */
 @WebServlet("/LoginResult")
 public class LoginResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public LoginResult() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,8 +27,6 @@ public class LoginResult extends HttpServlet {
 		try {
 			String login_id = request.getParameter("login_id");
 			String password = request.getParameter("login_password");
-			System.out.println(login_id);
-			System.out.println(password);
 
 			int userId = UserDAO.getUserId(login_id,password);
 

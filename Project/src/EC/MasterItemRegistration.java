@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class MasterItemRegistration
- */
 @WebServlet("/MasterItemRegistration")
 public class MasterItemRegistration extends HttpServlet {
 	private static final long serialVersionUID = 1L;

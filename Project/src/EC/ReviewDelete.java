@@ -13,9 +13,6 @@ import javax.servlet.http.HttpSession;
 import beans.ReviewDataBeans;
 import dao.ReviewDAO;
 
-/**
- * Servlet implementation class ReviewDelete
- */
 @WebServlet("/ReviewDelete")
 public class ReviewDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,6 +24,7 @@ public class ReviewDelete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 
 		try {

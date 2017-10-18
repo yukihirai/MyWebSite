@@ -26,6 +26,7 @@ public class UserSearch extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
+
 		int userId = (int)session.getAttribute("userId");
 
 		String inputLogin_id = request.getParameter("login_id");

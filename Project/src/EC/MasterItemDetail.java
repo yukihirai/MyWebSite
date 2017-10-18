@@ -13,9 +13,6 @@ import javax.servlet.http.HttpSession;
 import beans.ItemDataBeans;
 import dao.ItemDAO;
 
-/**
- * Servlet implementation class MasterItemDetail
- */
 @WebServlet("/MasterItemDetail")
 public class MasterItemDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,6 +24,7 @@ public class MasterItemDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 
 		try {

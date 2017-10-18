@@ -13,23 +13,22 @@ import javax.servlet.http.HttpSession;
 import beans.ItemDataBeans;
 import dao.ItemDAO;
 
-/**
- * Servlet implementation class Index
- */
 @WebServlet("/Index")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public Index() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+
+		String searchWord = (String)session.getAttribute("searchWord");
+		if(searchWord != null) {
+			session.removeAttribute("searchWord");
+		}
+
 		try {
 			ArrayList<ItemDataBeans>itemList = ItemDAO.getRandomItem(4);
 

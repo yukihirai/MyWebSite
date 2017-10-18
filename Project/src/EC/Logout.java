@@ -20,6 +20,12 @@ public class Logout extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("userId");
+
+		String searchWord = (String)session.getAttribute("searchWord");
+		if(searchWord != null) {
+			session.removeAttribute("searchWord");
+		}
+
 		request.getRequestDispatcher(EcHelper.LOGOUT_PAGE).forward(request, response);
 	}
 }

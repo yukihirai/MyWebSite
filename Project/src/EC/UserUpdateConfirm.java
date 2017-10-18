@@ -11,16 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import beans.UserDataBeans;
 
-/**
- * Servlet implementation class UserUpdateConfirm
- */
 @WebServlet("/UserUpdateConfirm")
 public class UserUpdateConfirm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UserUpdateConfirm() {
         super();
     }

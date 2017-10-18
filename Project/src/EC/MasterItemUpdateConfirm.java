@@ -15,9 +15,6 @@ import javax.servlet.http.Part;
 import beans.ItemDataBeans;
 import dao.ItemDAO;
 
-/**
- * Servlet implementation class MasterItemRegistrationConfirm
- */
 @WebServlet("/MasterItemUpdateConfirm")
 @MultipartConfig(location="C:\\Users\\yuki\\Documents\\MyWebSite\\Project\\WebContent\\pic", maxFileSize=1048576)
 public class MasterItemUpdateConfirm extends HttpServlet {

@@ -12,19 +12,12 @@ import javax.servlet.http.HttpSession;
 import beans.UserDataBeans;
 import dao.UserDAO;
 
-/**
- * Servlet implementation class UserRegistrationResult
- */
 @WebServlet("/UserRegistrationResult")
 public class UserRegistrationResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UserRegistrationResult() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

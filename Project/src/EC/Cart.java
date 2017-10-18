@@ -25,6 +25,8 @@ public class Cart extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+
+
 		try {
 			ArrayList<ItemDataBeans>cart = (ArrayList<ItemDataBeans>)session.getAttribute("cart");
 			if(cart == null) {

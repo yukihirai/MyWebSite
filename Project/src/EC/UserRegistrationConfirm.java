@@ -12,25 +12,19 @@ import javax.servlet.http.HttpSession;
 import beans.UserDataBeans;
 import dao.UserDAO;
 
-/**
- * Servlet implementation class UserRegistrationConfirm
- */
 @WebServlet("/UserRegistrationConfirm")
 public class UserRegistrationConfirm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UserRegistrationConfirm() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+
 		try {
 
 			String inputLogin_id = request.getParameter("login_id");

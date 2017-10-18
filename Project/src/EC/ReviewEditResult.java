@@ -8,15 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import beans.ReviewDataBeans;
 import dao.ItemDAO;
 import dao.ReviewDAO;
 
-/**
- * Servlet implementation class ReviewEditResult
- */
 @WebServlet("/ReviewEditResult")
 public class ReviewEditResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +23,6 @@ public class ReviewEditResult extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
 
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 		String head_comment = (String)request.getParameter("head_comment");

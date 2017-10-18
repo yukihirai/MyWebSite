@@ -146,12 +146,6 @@
 	    		<br>
 	    		<br>
 
-	    		<div class="form-group">
-	    			<label class="col-xs-2 control-label"><font size="4">商品画像</font></label>
-	    			<div class="col-xs-3">
-	    				<img src="pic/<%=idb.getFilm_name()%>" class="img-responsive img-thumbnail" alt="商品画像">
-	    			</div>
-	    		</div>
 			</div>
 
 	    	<div class="panel-footer">

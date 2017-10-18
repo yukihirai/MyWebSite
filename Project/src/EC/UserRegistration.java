@@ -11,9 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import beans.UserDataBeans;
 
-/**
- * Servlet implementation class UserRegist
- */
 @WebServlet("/UserRegistration")
 public class UserRegistration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,12 +19,10 @@ public class UserRegistration extends HttpServlet {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
+
 		UserDataBeans udb = (UserDataBeans) session.getAttribute("udb");
 
 		if(!(udb == null)) {

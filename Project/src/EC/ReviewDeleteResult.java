@@ -1,7 +1,6 @@
 package EC;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,16 +13,10 @@ import beans.ReviewDataBeans;
 import dao.ItemDAO;
 import dao.ReviewDAO;
 
-/**
- * Servlet implementation class ReviewDeleteResult
- */
 @WebServlet("/ReviewDeleteResult")
 public class ReviewDeleteResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ReviewDeleteResult() {
         super();
     }
@@ -32,18 +25,13 @@ public class ReviewDeleteResult extends HttpServlet {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 
-
 		ReviewDataBeans rdb = new ReviewDataBeans();
 		int reviewId = Integer.parseInt(request.getParameter("reviewId"));
 		try {
 			rdb = ReviewDAO.getReviewrDataBeansByReviewId(reviewId);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 
-		String resultDelete = request.getParameter("confirm_button");
+			String resultDelete = request.getParameter("confirm_button");
 
-		try {
 			switch(resultDelete){
 			case"cancel":
 				session.setAttribute("rdb",rdb);

@@ -66,6 +66,7 @@
     	<div class="row">
       		<div class="col-xs-6"></div>
       		<div class="col-xs-4">
+      		<form action="ItemSearchResult">
       			<div class="form-group">
 	    			<label class="control-label">
 	    				<font size="4"><button type="submit" class="btn btn-success btn-sm">検索</button></font>
@@ -73,7 +74,8 @@
 	    			<div class="col-xs-8">
 	    				<input  type="text" class="form-control" name="searchWord" placeholder="検索ワード">
 	    			</div>
-	    	</div>
+	    		</div>
+	    	</form>
       		</div>
 	    </div>
 	    <br>

@@ -14,9 +14,6 @@ import javax.servlet.http.HttpSession;
 import beans.ItemDataBeans;
 import dao.ItemDAO;
 
-/**
- * Servlet implementation class ItemSeach
- */
 @WebServlet("/ItemSearch")
 public class ItemSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,6 +25,7 @@ public class ItemSearch extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
+
 		String searchWord = request.getParameter("searchWord");
 
 		try {

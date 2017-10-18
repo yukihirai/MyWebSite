@@ -16,9 +16,6 @@ import dao.ItemDAO;
 import dao.ReviewDAO;
 import dao.UserDAO;
 
-/**
- * Servlet implementation class Review
- */
 @WebServlet("/Review")
 public class Review extends HttpServlet {
 	private static final long serialVersionUID = 1L;

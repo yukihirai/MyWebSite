@@ -16,9 +16,6 @@ import beans.ReviewDataBeans;
 import dao.ItemDAO;
 import dao.ReviewDAO;
 
-/**
- * Servlet implementation class ItemDetail
- */
 @WebServlet("/ItemDetail")
 public class ItemDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,6 +27,7 @@ public class ItemDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
+
 		ReviewDataBeans rdb = (ReviewDataBeans)session.getAttribute("rdb");
 		int itemId = 0;
 

@@ -12,19 +12,12 @@ import javax.servlet.http.HttpSession;
 import beans.UserDataBeans;
 import dao.UserDAO;
 
-/**
- * Servlet implementation class UserUpdate
- */
 @WebServlet("/UserUpdate")
 public class UserUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public UserUpdate() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

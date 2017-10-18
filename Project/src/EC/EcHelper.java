@@ -36,7 +36,9 @@ public class EcHelper {
 
 	static final String ERROR_PAGE = "/error.jsp";
 
-	static final String ITEM_DETAIL_PAGE = "itemDetail.jsp";
+	static final String ITEM_DETAIL_PAGE = "/itemDetail.jsp";
+
+	static final String ITEM_SEARCH_RESULT_PAGE = "/itemSearchResult.jsp";
 
 	static final String REVIEW_EDIT_PAGE = "/reviewEdit.jsp";
 

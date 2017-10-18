@@ -56,7 +56,6 @@ public class ReviewDAO{
 			st = con.prepareStatement("SELECT item_Value FROM review WHERE item_id = ?");
 			st.setInt(1,itemId);
 			ResultSet rs = st.executeQuery();
-			System.out.println(rs);
 
 			int ie = 0;
 			int count = 0;
@@ -67,8 +66,6 @@ public class ReviewDAO{
 			}
 			double allVa = (double)ie/count;
 			double conAllVa = new BigDecimal(String.valueOf(allVa)).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
-
-			System.out.println(conAllVa);
 
 			return conAllVa;
 

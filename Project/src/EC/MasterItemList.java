@@ -14,9 +14,6 @@ import javax.servlet.http.HttpSession;
 import beans.ItemDataBeans;
 import dao.ItemDAO;
 
-/**
- * Servlet implementation class MasterItemList
- */
 @WebServlet("/MasterItemList")
 public class MasterItemList extends HttpServlet {
 	private static final long serialVersionUID = 1L;

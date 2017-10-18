@@ -32,7 +32,6 @@ public class BuyConfirm extends HttpServlet {
 		try {
 			int userId = (int)session.getAttribute("userId");
 			int DeliveryMethodId = Integer.parseInt(request.getParameter("delevary_method_id"));
-			System.out.println(DeliveryMethodId);
 			DeliveryMethodDataBeans dmdb = DeliveryMethodDAO.getDeliveryMethodDataBeansByDeliveryMethodId(DeliveryMethodId);
 			ArrayList<ItemDataBeans>cartIdbList = (ArrayList<ItemDataBeans>)session.getAttribute("cart");
 
