@@ -142,7 +142,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label"><font size="4">商品詳細</font></label>
 	    			<div class="col-xs-9">
-	    				<textarea class="form-control" name="review" cols="100" rows="5" placeholder="詳細" required><%=idb.getDetail()%></textarea>
+	    				<textarea class="form-control" name="controller.review" cols="100" rows="5" placeholder="詳細" required><%=idb.getDetail()%></textarea>
 	    			</div>
 	    		</div>
 

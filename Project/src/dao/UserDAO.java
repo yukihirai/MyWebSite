@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import EC.EcHelper;
 import base.DBManager;
 import beans.UserDataBeans;
+import controller.main.EcHelper;
 
 public class UserDAO{
 	public static UserDAO getInstance(){

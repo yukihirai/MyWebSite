@@ -3,7 +3,7 @@ package beans;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import EC.EcHelper;
+import controller.main.EcHelper;
 
 public class UserDataBeans {
 	private int id;

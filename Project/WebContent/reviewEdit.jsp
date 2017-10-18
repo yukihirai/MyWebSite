@@ -57,7 +57,7 @@
 	    		<div class="form-group">
 	    			<label class="col-xs-2 control-label">レビュー内容</label>
 	    			<div class="col-xs-10">
-	    				<textarea class="form-control" name="review" cols="150" rows="5" required><%=rdb.getReview()%></textarea>
+	    				<textarea class="form-control" name="controller.review" cols="150" rows="5" required><%=rdb.getReview()%></textarea>
 	    			</div>
 	    		</div>
 	    		<br>

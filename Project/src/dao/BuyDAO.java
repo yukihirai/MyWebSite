@@ -17,6 +17,7 @@ public class BuyDAO {
 		return new BuyDAO();
 	}
 
+
 	public static int insertBuyData(BuyDataBeans bdb) throws SQLException{
 		Connection con = null;
 		PreparedStatement st = null;

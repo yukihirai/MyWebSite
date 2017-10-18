@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>master</title>
+    <title>controller.master</title>
 
     <style type="text/css">
     p.break-word{word-wrap:break-word;}
